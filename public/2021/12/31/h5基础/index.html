@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="HTML5中新增的方法，元素，canvas和svg的使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML5新增">
+<meta property="og:url" content="http://example.com/2021/12/31/h5%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="筱">
+<meta property="og:description" content="HTML5中新增的方法，元素，canvas和svg的使用">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-12-31T08:21:22.000Z">
+<meta property="article:modified_time" content="2021-12-31T08:58:22.080Z">
+<meta property="article:author" content="筱">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="HTML">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2021/12/31/h5%E5%9F%BA%E7%A1%80/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2021/12/31/h5%E5%9F%BA%E7%A1%80/","path":"2021/12/31/h5基础/","title":"HTML5新增"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>HTML5新增 | 筱</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?4301d11b48139d9c6adb4611ed1fc576"></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">筱</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">21</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">5</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">69</span></a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTML5-%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">HTML5 基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#input%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">input：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#type%E9%87%8C%E9%9D%A2%E6%96%B0%E5%A2%9E%E5%8A%A0%E7%9A%84%E7%B1%BB%E5%9E%8B%EF%BC%9A%EF%BC%88%E6%9C%89%E5%85%BC%E5%AE%B9%E6%80%A7%E9%97%AE%E9%A2%98%EF%BC%8C%E4%B8%8D%E6%8E%A8%E8%8D%90%E4%BD%BF%E7%94%A8%EF%BC%89"><span class="nav-number">1.1.1.</span> <span class="nav-text">type里面新增加的类型：（有兼容性问题，不推荐使用）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%EF%BC%9A"><span class="nav-number">1.2.</span> <span class="nav-text">其他：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%96%E6%8B%BD%E5%91%A8%E6%9C%9F%EF%BC%9A%E6%8E%A8%E6%8B%BD%E5%BC%80%E5%A7%8B%EF%BC%8C%E6%8B%96%E6%8B%BD%E8%BF%9B%E8%A1%8C%E6%97%B6%EF%BC%8C%E6%8B%96%E6%8B%BD%E7%BB%93%E6%9D%9F"><span class="nav-number">1.2.1.</span> <span class="nav-text">拖拽周期：推拽开始，拖拽进行时，拖拽结束</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B6%89%E5%8F%8A%E4%BA%8B%E4%BB%B6%EF%BC%9A"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">涉及事件：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8B%96%E6%8B%BD%E7%9B%AE%E6%A0%87%E4%BA%8B%E4%BB%B6%EF%BC%9A"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">拖拽目标事件：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#canvas%EF%BC%9A"><span class="nav-number">1.3.</span> <span class="nav-text">canvas：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#canvas%E4%B8%AD%E7%94%BB%E7%AC%94%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="nav-number">1.3.1.</span> <span class="nav-text">canvas中画笔方法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#canvas%E7%94%BB%E7%9F%A9%E5%BD%A2%EF%BC%9A"><span class="nav-number">1.3.2.</span> <span class="nav-text">canvas画矩形：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#canvas%E7%94%BB%E5%9C%86%E5%BD%A2%EF%BC%8C%E5%9C%86%E5%BC%A7%EF%BC%9A"><span class="nav-number">1.3.3.</span> <span class="nav-text">canvas画圆形，圆弧：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#canvas%E7%94%BB%E5%9C%86%E8%A7%92%E7%9F%A9%E5%BD%A2%EF%BC%9A"><span class="nav-number">1.3.4.</span> <span class="nav-text">canvas画圆角矩形：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%BB%E4%B8%80%E6%9D%A1%E5%B8%A6%E5%BC%A7%E7%9A%84%E7%BA%BF%EF%BC%9A"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">画一条带弧的线：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B4%9D%E5%A1%9E%E5%B0%94%E6%9B%B2%E7%BA%BF%EF%BC%9A"><span class="nav-number">1.3.5.</span> <span class="nav-text">贝塞尔曲线：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%98%E6%8D%A2%EF%BC%9A"><span class="nav-number">1.3.6.</span> <span class="nav-text">变换：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#canvas%E6%94%B9%E5%8F%98%E6%A0%B7%E5%BC%8F%EF%BC%9A"><span class="nav-number">1.3.7.</span> <span class="nav-text">canvas改变样式：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%B8%90%E5%8F%98-%E5%8F%82%E8%80%83"><span class="nav-number">1.3.8.</span> <span class="nav-text">添加渐变  参考</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%98%B4%E5%BD%B1%EF%BC%9A%EF%BC%88%E9%BB%98%E8%AE%A4%E6%98%AF%E8%BE%B9%E6%A1%86%E7%9A%84%E9%87%8C%E5%A4%96%E9%83%BD%E6%9C%89%EF%BC%89"><span class="nav-number">1.3.8.1.</span> <span class="nav-text">阴影：（默认是边框的里外都有）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%BF%E6%AE%B5%E6%A0%B7%E5%BC%8F%EF%BC%88%E5%9C%A8%E7%BA%BF%E7%9A%84%E4%B8%A4%E7%AB%AF%E6%B7%BB%E5%8A%A0%E6%A0%B7%E5%BC%8F%EF%BC%89%EF%BC%9A"><span class="nav-number">1.3.8.2.</span> <span class="nav-text">线段样式（在线的两端添加样式）：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#canvas%E7%BB%98%E5%88%B6%E6%96%87%E5%AD%97%EF%BC%9A"><span class="nav-number">1.3.8.3.</span> <span class="nav-text">canvas绘制文字：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#svg"><span class="nav-number">1.4.</span> <span class="nav-text">svg:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%BB%E7%9B%B4%E7%BA%BF%EF%BC%9A"><span class="nav-number">1.4.1.</span> <span class="nav-text">画直线：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%BB%E7%9F%A9%E5%BD%A2%EF%BC%9A"><span class="nav-number">1.4.2.</span> <span class="nav-text">画矩形：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%BB%E5%9C%86%EF%BC%9A"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">画圆：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%BB%E6%A4%AD%E5%9C%86%EF%BC%9A"><span class="nav-number">1.4.2.2.</span> <span class="nav-text">画椭圆：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%BB%E6%8A%98%E7%BA%BF%EF%BC%9A"><span class="nav-number">1.4.2.3.</span> <span class="nav-text">画折线：</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link"><span class="nav-number">1.4.2.3.0.1.</span> <span class="nav-text"></span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="筱"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">筱</p>
+  <div class="site-description" itemprop="description">筱的博客</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">69</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/135xyq" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;135xyq" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:xyq135@gmail.com" title="E-Mail → mailto:xyq135@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/%E7%AD%B1xyq" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;筱xyq" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://plus.google.com/%E8%B0%A2%E6%B0%B8%E5%BC%BA" title="Google → https:&#x2F;&#x2F;plus.google.com&#x2F;谢永强" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/135xyq" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/31/h5%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="筱">
+      <meta itemprop="description" content="筱的博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筱">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          HTML5新增
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-12-31 16:21:22 / 修改时间：16:58:22" itemprop="dateCreated datePublished" datetime="2021-12-31T16:21:22+08:00">2021-12-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">前端学习笔记</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.9k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">HTML5中新增的方法，元素，canvas和svg的使用</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="HTML5-基础"><a href="#HTML5-基础" class="headerlink" title="HTML5 基础"></a>HTML5 基础</h1><hr>
+<h2 id="input："><a href="#input：" class="headerlink" title="input："></a>input：</h2><p>placeholder：输入框提示</p>
+<h3 id="type里面新增加的类型：（有兼容性问题，不推荐使用）"><a href="#type里面新增加的类型：（有兼容性问题，不推荐使用）" class="headerlink" title="type里面新增加的类型：（有兼容性问题，不推荐使用）"></a>type里面新增加的类型：（有兼容性问题，不推荐使用）</h3><ul>
+<li>date:可以选择日期（兼容性不好）;</li>
+<li>time:时间；week：星期；</li>
+<li>datetime-local:可以选择日期时间；</li>
+<li>number：只能填写数字 color：填颜色。</li>
+</ul>
+<h2 id="其他："><a href="#其他：" class="headerlink" title="其他："></a>其他：</h2><p><code>contenteditable=&quot;true&quot;</code> ：可修改元素的内容（可以继承）（没有兼容性问题）</p>
+<p><code>draggable = &quot;true&quot;</code> :元素可拖拽（大部分元素默认为false，其中a标签img标签默认为true） （只有Chrome和Safari支持）</p>
+<h3 id="拖拽周期：推拽开始，拖拽进行时，拖拽结束"><a href="#拖拽周期：推拽开始，拖拽进行时，拖拽结束" class="headerlink" title="拖拽周期：推拽开始，拖拽进行时，拖拽结束"></a>拖拽周期：推拽开始，拖拽进行时，拖拽结束</h3><h4 id="涉及事件："><a href="#涉及事件：" class="headerlink" title="涉及事件："></a>涉及事件：</h4><ul>
+<li>拖拽开始（dragstart）,按下物体的瞬间不会触发事件，必须移动</li>
+<li>拖拽移动事件（drag）,移动的时候触发</li>
+<li>拖拽结束时间（dragend），结束时间<h4 id="拖拽目标事件："><a href="#拖拽目标事件：" class="headerlink" title="拖拽目标事件："></a>拖拽目标事件：</h4></li>
+<li>dragenter：当拖拽进入目标区域时，不是元素图形进入触发，而是拖拽的鼠标进入才会触发</li>
+<li>dragover：在拖拽目标的范围内移动触发(想要阻止元素回到默认位置，必须在这设置阻止默认事件)</li>
+<li>dragleave：离开拖拽目标触发</li>
+<li>dragdrop: 必须在dragover事件下阻止默认事件才会触发（e.preventDefault()）</li>
+</ul>
+<p>拖拽的时候元素会脱离文档结构，放回去的时候在恢复。</p>
+<p><code>dataTransfer.effectAllowed</code>:可以改变拖拽时指针的样式（必须写在draggstart里，兼容性不行)</p>
+<p><code>e.dataTransfer.effectAllowed = 样式</code></p>
+<p><code>dataTransfer.dropEffect</code>:可以改变拖拽松手时指针的样式（必须写在drop里，兼容性不行）</p>
+<p><code>e.dataTransfer.dropEffect = 样式</code></p>
+<h2 id="canvas："><a href="#canvas：" class="headerlink" title="canvas："></a><a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/html5-canvas-intro.html">canvas</a>：</h2><p>canvas要在js中开始操作画图。<br>canvas设置画板的大小需要在行间设置</p>
+<h3 id="canvas中画笔方法："><a href="#canvas中画笔方法：" class="headerlink" title="canvas中画笔方法："></a>canvas中画笔方法：</h3><p><code>画板.getContext(&quot;2d&quot;) : 生成一个画笔</code><br>moveTo（x,y）:画笔开始的的位置<br>lineTo（x,y）：下一笔要到的地方<br>lineWidth：设置画笔画出来线条的宽度（每个画笔画出来的图形苦读一样）<br>beginPath ：开启一个新的路径<br>closePath ：自动闭合所画的图形（闭合当前这一个路径）<br>stroke ： 将画笔的轨迹写到画板上（即展示画的图形）<br>fill : 将图形的内容区填满（会自动闭合图形）<br>clearRect（起始X，起始Y，矩形的宽，矩形的高）:清除这个矩形框的内容（相当于橡皮擦）</p>
+<h3 id="canvas画矩形："><a href="#canvas画矩形：" class="headerlink" title="canvas画矩形："></a>canvas画矩形：</h3><ol>
+<li>一笔一笔的画</li>
+<li>rect（起始X，起始Y，矩形的宽，矩形的高）:一个矩形</li>
+<li>strokeRect(起始X，起始Y，矩形的宽，矩形的高):一个只有边框的矩形</li>
+<li>fillRect（起始X，起始Y，矩形的宽，矩形的高）：有填充内容的矩形</li>
+</ol>
+<h3 id="canvas画圆形，圆弧："><a href="#canvas画圆形，圆弧：" class="headerlink" title="canvas画圆形，圆弧："></a>canvas画圆形，圆弧：</h3><p>参数：圆心（x,y），半径(r)，弧度（开始弧度start，结束弧度end，必须以π（Math.PI）为单位 例 Math.PI* 2 : 360度），方向（顺时针，逆时针，顺时针写为0，逆时针为1）</p>
+<p>arc（x,y,r,开始弧度,结束弧度,方向）：方法</p>
+<h3 id="canvas画圆角矩形："><a href="#canvas画圆角矩形：" class="headerlink" title="canvas画圆角矩形："></a>canvas画圆角矩形：</h3><h4 id="画一条带弧的线："><a href="#画一条带弧的线：" class="headerlink" title="画一条带弧的线："></a>画一条带弧的线：</h4><p>参数：线直线部分的结束坐标（x,y），线的结束部分弧的方向（需填写一个坐标表示延伸方向，只提供方向参考），圆弧的大小</p>
+<p>arcTo（x,y，弧所延伸方向的坐标，圆弧的大小）：画出一条线</p>
+<p><strong>注意</strong>：四条线就可画出圆角矩形，画笔的起始位置应该为矩形的弧形大小预留出一定的位置</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">        <span class="comment">//画一个弧度为10px 起始位置位（100 100），宽高为100的圆角矩形</span></span><br><span class="line">ctx.moveTo(<span class="number">100</span>, <span class="number">110</span>);</span><br><span class="line">        ctx.arcTo(<span class="number">100</span>, <span class="number">200</span>, <span class="number">200</span>, <span class="number">200</span>, <span class="number">10</span>);</span><br><span class="line">        ctx.arcTo(<span class="number">200</span>, <span class="number">200</span>, <span class="number">200</span>, <span class="number">100</span>, <span class="number">10</span>);</span><br><span class="line">        ctx.arcTo(<span class="number">200</span>, <span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>, <span class="number">10</span>);</span><br><span class="line">        ctx.arcTo(<span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>, <span class="number">200</span>, <span class="number">10</span>);</span><br><span class="line">        ctx.stroke();</span><br></pre></td></tr></table></figure>
+<h3 id="贝塞尔曲线："><a href="#贝塞尔曲线：" class="headerlink" title="贝塞尔曲线："></a>贝塞尔曲线：</h3><p>二次贝塞尔曲线需提供三个点，做出两条辅助线<br>三次需要四个点，三条辅助线，<br>其他类推（第一个点为画笔的起始点） </p>
+<p>quadraticCurveTo（第二个点横坐标，第二个点纵坐标，第三个点横坐标，第三个点纵坐标）：二次贝塞尔曲线</p>
+<p>bezierCurveTo(第二个点横坐标，第二个点纵坐标，第三个点横坐标，第三个点纵坐标,第四个点横坐标，第四个点纵坐标)：三次贝塞尔曲线</p>
+<h3 id="变换："><a href="#变换：" class="headerlink" title="变换："></a>变换：</h3><p>translate（x,y）:画布的坐标系原点（对全局都有作用）<br>rotate(角度):所画图形的旋转角度（必须以π为单位），旋转中心为坐标系原点（对全局都有作用。<br>scale（x轴方向，y轴方向）：缩放图形，图形的每一个坐标点都乘以了相应的系数（对全局都有作用）<br>解决消除对全局的影响：再开始时调用save方法（），在对某一部分调用完rotate和translate方法后再次调用restore方法就可以将后面部分恢复为默认的。</p>
+<h3 id="canvas改变样式："><a href="#canvas改变样式：" class="headerlink" title="canvas改变样式："></a>canvas改变样式：</h3><p>fillstyle：改变填充的颜色，<br>可以添加图片（图片从坐标原点开始渲染）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">        <span class="keyword">var</span> img = <span class="keyword">new</span> Image();</span><br><span class="line">        img.src = <span class="string">&quot;../images/1.jpeg&quot;</span></span><br><span class="line">        img.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            ctx.beginPath();</span><br><span class="line">            <span class="keyword">var</span> bg = ctx.createPattern(img, <span class="string">&#x27;no-repeat&#x27;</span>)</span><br><span class="line">            ctx.fillStyle = bg;</span><br><span class="line">            ctx.fillRect(<span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>)</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="添加渐变-参考"><a href="#添加渐变-参考" class="headerlink" title="添加渐变  参考"></a>添加渐变  <a target="_blank" rel="noopener" href="https://www.runoob.com/html/html5-canvas.html">参考</a></h3><h4 id="阴影：（默认是边框的里外都有）"><a href="#阴影：（默认是边框的里外都有）" class="headerlink" title="阴影：（默认是边框的里外都有）"></a>阴影：（默认是边框的里外都有）</h4><ul>
+<li>shadowColor:添加阴影颜色</li>
+<li>shadowBlur：添加阴影的大小</li>
+<li>shadowOffsetX：阴影水平方向平移</li>
+<li>shadowOffsetY：阴影垂直方向平移</li>
+</ul>
+<h4 id="线段样式（在线的两端添加样式）："><a href="#线段样式（在线的两端添加样式）：" class="headerlink" title="线段样式（在线的两端添加样式）："></a>线段样式（在线的两端添加样式）：</h4><ul>
+<li>lineCap属性：在两端加一个图形，为扩大线段的长度（值为round表示加一个半圆，）</li>
+<li>lineJoin属性：两个线相交时的样式</li>
+</ul>
+<h4 id="canvas绘制文字："><a href="#canvas绘制文字：" class="headerlink" title="canvas绘制文字："></a>canvas绘制文字：</h4><p>strokeText（文字，开始横坐标，开始纵坐标）：文字描边（空心字体）</p>
+<p>fillText（文字，开始横坐标，开始纵坐标）：文字填充，（实心字体）可以用fillstyle改变字体颜色</p>
+<h2 id="svg"><a href="#svg" class="headerlink" title="svg:"></a><a target="_blank" rel="noopener" href="https://www.runoob.com/svg/svg-tutorial.html">svg</a>:</h2><p>svg适合矢量图，放大不会失真，适合大面积的贴图，通常动画较简单（标签和CSS绘画）<br>canvas适合用于小面积的绘图，适合动画（JS去画）</p>
+<h3 id="画直线："><a href="#画直线：" class="headerlink" title="画直线："></a>画直线：</h3><p>在SVG标签里使用line标签有四个属性x1,y1,x2,y2分别代表开始位置坐标和结束位置坐标，画完之后要在css中为他们设置stroke属性</p>
+<h3 id="画矩形："><a href="#画矩形：" class="headerlink" title="画矩形："></a>画矩形：</h3><p>在SVG里用标签rect标签，属性width，height，x,y,rx,ry,分别表示矩形的宽，高，起始位置的横纵坐标，圆角的宽高</p>
+<h4 id="画圆："><a href="#画圆：" class="headerlink" title="画圆："></a>画圆：</h4><p>在SVG里用标签circle</p>
+<h4 id="画椭圆："><a href="#画椭圆：" class="headerlink" title="画椭圆："></a>画椭圆：</h4><p>在SVG里用ellipse标签</p>
+<h4 id="画折线："><a href="#画折线：" class="headerlink" title="画折线："></a>画折线：</h4><p>在SVG里用polyline标签，默认闭合<br>解决默认填充的可以在css中将fill值改为transparent</p>
+<h6 id=""><a href="#" class="headerlink" title=""></a></h6>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag"><i class="fa fa-tag"></i> 前端</a>
+              <a href="/tags/HTML/" rel="tag"><i class="fa fa-tag"></i> HTML</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/12/31/js%E6%94%B6%E5%AE%98%E5%92%8C%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/" rel="prev" title="js中常用的数组方法">
+                  <i class="fa fa-chevron-left"></i> js中常用的数组方法
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/12/31/git%E6%96%87%E6%A1%A3/" rel="next" title="常用的git操作">
+                  常用的git操作 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">筱</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">140k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">2:07</span>
+  </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

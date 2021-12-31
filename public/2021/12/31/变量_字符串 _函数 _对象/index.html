@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="对ES6中的变量、字符串、函数、对象再次进行了补充，包括const和let的使用、模板字符串的使用、箭头函数的使用、对象的简单介绍">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6中的变量 字符串 函数对象">
+<meta property="og:url" content="http://example.com/2021/12/31/%E5%8F%98%E9%87%8F_%E5%AD%97%E7%AC%A6%E4%B8%B2%20_%E5%87%BD%E6%95%B0%20_%E5%AF%B9%E8%B1%A1/index.html">
+<meta property="og:site_name" content="筱">
+<meta property="og:description" content="对ES6中的变量、字符串、函数、对象再次进行了补充，包括const和let的使用、模板字符串的使用、箭头函数的使用、对象的简单介绍">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-12-31T08:21:22.000Z">
+<meta property="article:modified_time" content="2021-12-31T08:50:13.445Z">
+<meta property="article:author" content="筱">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="ES6">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2021/12/31/%E5%8F%98%E9%87%8F_%E5%AD%97%E7%AC%A6%E4%B8%B2%20_%E5%87%BD%E6%95%B0%20_%E5%AF%B9%E8%B1%A1/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2021/12/31/%E5%8F%98%E9%87%8F_%E5%AD%97%E7%AC%A6%E4%B8%B2%20_%E5%87%BD%E6%95%B0%20_%E5%AF%B9%E8%B1%A1/","path":"2021/12/31/变量_字符串 _函数 _对象/","title":"ES6中的变量 字符串 函数对象"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ES6中的变量 字符串 函数对象 | 筱</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?4301d11b48139d9c6adb4611ed1fc576"></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">筱</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">21</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">5</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">69</span></a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%98%E9%87%8F-%E5%AD%97%E7%AC%A6%E4%B8%B2-%E5%87%BD%E6%95%B0-%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.</span> <span class="nav-text">变量 字符串 函数 对象</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">变量：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#let%E5%A3%B0%E6%98%8E%E5%8F%98%E9%87%8F%EF%BC%9A"><span class="nav-number">1.1.1.</span> <span class="nav-text">let声明变量：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#const%E5%A3%B0%E6%98%8E%E5%B8%B8%E9%87%8F%EF%BC%9A"><span class="nav-number">1.2.</span> <span class="nav-text">const声明常量：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%9A"><span class="nav-number">1.3.</span> <span class="nav-text">字符串：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2API%EF%BC%88%E4%BB%A5%E4%B8%8B%E5%85%A8%E4%B8%BA%E5%AE%9E%E4%BE%8B%E6%96%B9%E6%B3%95%EF%BC%89%EF%BC%9A"><span class="nav-number">1.3.1.</span> <span class="nav-text">字符串API（以下全为实例方法）：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%9A"><span class="nav-number">1.3.2.</span> <span class="nav-text">模板字符串：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8%E6%A8%A1%E6%9D%BF%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B9%A6%E5%86%99%E4%B9%8B%E5%89%8D%E5%8F%AF%E4%BB%A5%E4%B9%8B%E5%89%8D%E5%8F%AF%E4%BB%A5%E5%8A%A0%E4%B8%8A%E4%B8%80%E4%B8%AA%E6%A0%87%E8%AE%B0%EF%BC%9A"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">在模板字符串书写之前可以之前可以加上一个标记：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%EF%BC%9A"><span class="nav-number">1.4.</span> <span class="nav-text">函数：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E9%BB%98%E8%AE%A4%E5%80%BC%EF%BC%9A"><span class="nav-number">1.4.1.</span> <span class="nav-text">参数默认值：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%A9%E4%BD%99%E5%8F%82%E6%95%B0%EF%BC%9A"><span class="nav-number">1.4.2.</span> <span class="nav-text">剩余参数：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B1%95%E5%BC%80%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%9A"><span class="nav-number">1.4.3.</span> <span class="nav-text">展开运算符：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0%EF%BC%9A"><span class="nav-number">1.4.4.</span> <span class="nav-text">箭头函数：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#this%E6%8C%87%E5%90%91%EF%BC%9A"><span class="nav-number">1.4.4.1.</span> <span class="nav-text">this指向：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E8%AF%AD%E6%B3%95"><span class="nav-number">1.4.4.2.</span> <span class="nav-text">使用语法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E7%BB%86%E8%8A%82"><span class="nav-number">1.4.4.3.</span> <span class="nav-text">注意细节</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">1.4.4.4.</span> <span class="nav-text">应用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%B4%E6%97%B6%E6%80%A7%E4%BD%BF%E7%94%A8%E7%9A%84%E5%87%BD%E6%95%B0%EF%BC%8C%E5%B9%B6%E4%B8%8D%E4%BC%9A%E5%8F%AF%E4%BB%A5%E8%B0%83%E7%94%A8%E5%AE%83%EF%BC%8C%E6%AF%94%E5%A6%82%EF%BC%9A"><span class="nav-number">1.4.4.4.1.</span> <span class="nav-text">临时性使用的函数，并不会可以调用它，比如：</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%EF%BC%9A"><span class="nav-number">1.5.</span> <span class="nav-text">对象：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E5%AD%97%E9%9D%A2%E9%87%8F%E8%AF%AD%E6%B3%95%EF%BC%9A"><span class="nav-number">1.5.1.</span> <span class="nav-text">变量字面量语法：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%88%90%E5%91%98%E9%80%9F%E5%86%99%EF%BC%9A"><span class="nav-number">1.5.1.1.</span> <span class="nav-text">成员速写：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E9%80%9F%E5%86%99%EF%BC%9A"><span class="nav-number">1.5.1.2.</span> <span class="nav-text">方法速写：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E5%90%8D%EF%BC%9A"><span class="nav-number">1.5.1.3.</span> <span class="nav-text">计算属性名：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object%E7%9A%84%E6%96%B0%E5%A2%9EAPI%EF%BC%9A"><span class="nav-number">1.5.2.</span> <span class="nav-text">Object的新增API：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%EF%BC%9A"><span class="nav-number">1.6.</span> <span class="nav-text">类：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%A0%E7%BB%9F%E7%9A%84%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">1.6.1.</span> <span class="nav-text">传统的构造函数的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E7%9A%84%E7%89%B9%E7%82%B9"><span class="nav-number">1.6.2.</span> <span class="nav-text">类的特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E7%9A%84%E8%AF%AD%E6%B3%95%EF%BC%9A"><span class="nav-number">1.6.3.</span> <span class="nav-text">类的语法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E9%87%8C%E9%9D%A2%E5%B1%9E%E6%80%A7%E7%9A%84%E8%8E%B7%E5%8F%96%E5%92%8C%E6%9B%B4%E6%94%B9%EF%BC%9A"><span class="nav-number">1.6.4.</span> <span class="nav-text">类里面属性的获取和更改：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%EF%BC%9A"><span class="nav-number">1.6.4.1.</span> <span class="nav-text">获取：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9B%B4%E6%94%B9%EF%BC%9A"><span class="nav-number">1.6.4.2.</span> <span class="nav-text">更改：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%EF%BC%9A"><span class="nav-number">1.6.5.</span> <span class="nav-text">静态成员：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E7%9A%84%E7%BB%A7%E6%89%BF"><span class="nav-number">1.6.6.</span> <span class="nav-text">类的继承</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%A6%82%E6%9E%9C%E4%B8%A4%E4%B8%AA%E7%B1%BBA%E5%92%8CB%EF%BC%8C%E5%A6%82%E6%9E%9C%E5%8F%AF%E4%BB%A5%E6%8F%8F%E8%BF%B0%E4%B8%BA%EF%BC%9AB-%E6%98%AF-A%EF%BC%8C%E5%88%99%EF%BC%8CA%E5%92%8CB%E5%BD%A2%E6%88%90%E7%BB%A7%E6%89%BF%E5%85%B3%E7%B3%BB%E5%88%99%EF%BC%9A"><span class="nav-number">1.6.6.0.0.1.</span> <span class="nav-text">如果两个类A和B，如果可以描述为：B 是 A，则，A和B形成继承关系则：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97%EF%BC%9A"><span class="nav-number">1.6.6.1.</span> <span class="nav-text">继承的关键字：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%EF%BC%9A"><span class="nav-number">1.6.6.2.</span> <span class="nav-text">注意：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E3%80%90%E5%86%B7%E7%9F%A5%E8%AF%86%E3%80%91"><span class="nav-number">1.6.6.3.</span> <span class="nav-text">【冷知识】</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%94%A8JS%E5%88%B6%E4%BD%9C%E6%8A%BD%E8%B1%A1%E7%B1%BB"><span class="nav-number">1.6.6.3.1.</span> <span class="nav-text">用JS制作抽象类</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="筱"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">筱</p>
+  <div class="site-description" itemprop="description">筱的博客</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">69</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/135xyq" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;135xyq" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:xyq135@gmail.com" title="E-Mail → mailto:xyq135@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/%E7%AD%B1xyq" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;筱xyq" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://plus.google.com/%E8%B0%A2%E6%B0%B8%E5%BC%BA" title="Google → https:&#x2F;&#x2F;plus.google.com&#x2F;谢永强" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/135xyq" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/31/%E5%8F%98%E9%87%8F_%E5%AD%97%E7%AC%A6%E4%B8%B2%20_%E5%87%BD%E6%95%B0%20_%E5%AF%B9%E8%B1%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="筱">
+      <meta itemprop="description" content="筱的博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筱">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ES6中的变量 字符串 函数对象
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-12-31 16:21:22 / 修改时间：16:50:13" itemprop="dateCreated datePublished" datetime="2021-12-31T16:21:22+08:00">2021-12-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">前端学习笔记</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>5.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">对ES6中的变量、字符串、函数、对象再次进行了补充，包括const和let的使用、模板字符串的使用、箭头函数的使用、对象的简单介绍</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="变量-字符串-函数-对象"><a href="#变量-字符串-函数-对象" class="headerlink" title="变量 字符串 函数 对象"></a>变量 字符串 函数 对象</h1><hr>
+<h2 id="变量："><a href="#变量：" class="headerlink" title="变量："></a>变量：</h2><h3 id="let声明变量："><a href="#let声明变量：" class="headerlink" title="let声明变量："></a>let声明变量：</h3><p>解决全局污染问题，let声明的变量不会挂载到全局变量。<br>let声明的变量，不允许在一个作用域范围内（全局作用域，函数作用域，块级作用域）重复声明 。<br>块级作用域：{}，在块级作用域中定义的变量，在外部无法访问。<br>let变量不会变量提升，不能在定义之前使用该变量。<br>在循环中，用let声明的变量会进行特殊处理，每次进入循环体，都会开启一个新的作用域，并且将循环变量绑定到该作用域（每次循环使用的是一个全新的变量）。<br>用let声明的循环变量在循环结束时会自动销毁。</p>
+<h2 id="const声明常量："><a href="#const声明常量：" class="headerlink" title="const声明常量："></a>const声明常量：</h2><p>const和let完全相同，仅在于const声明的变量，必须在变量声明时赋值，而且不可以重新赋值。<br>多使用const避免犯错。<br>const声明一个对象时，对象里面的属性是可以更改的，仅仅是对象的名不能重新赋值。<br>在for循环中循环变量不能使用const常量，在for in循环中可以使用。</p>
+<h2 id="字符串："><a href="#字符串：" class="headerlink" title="字符串："></a>字符串：</h2><h3 id="字符串API（以下全为实例方法）："><a href="#字符串API（以下全为实例方法）：" class="headerlink" title="字符串API（以下全为实例方法）："></a>字符串API（以下全为实例方法）：</h3><ul>
+<li>原字符串.includes（子字符串，开始查找的索引值（可省略，默认从0开始））：判断字符串是否包含指定的子字符串。</li>
+<li>startWith（子字符串，开始查找的索引值（可省略，默认从0开始））:是否以指定字符串开头。</li>
+<li>endWith（子字符串，开始查找的索引值（可省略，默认从0开始））：是否以指定字符串结尾。</li>
+<li>repeat（子字符串，开始查找的索引值（可省略，默认从0开始））：将字符串重复指定的次数，重新返回一个新的字符串。</li>
+</ul>
+<h3 id="模板字符串："><a href="#模板字符串：" class="headerlink" title="模板字符串："></a>模板字符串：</h3><p>写在 `` 里面，<br>要拼接字符串，将要拼接的字符串加在${}里。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">        <span class="keyword">var</span> level1 = <span class="string">&quot;谢永强&quot;</span>;</span><br><span class="line">        <span class="keyword">var</span> level2 = <span class="string">&quot;帅&quot;</span>;</span><br><span class="line">        <span class="keyword">var</span> txt = <span class="string">`我感觉<span class="subst">$&#123;level1&#125;</span>很<span class="subst">$&#123;level2&#125;</span>`</span>;</span><br><span class="line">        <span class="built_in">console</span>.log(txt);</span><br></pre></td></tr></table></figure>
+<p>在模板字符串前面加上标记 ： String.raw ,可以将模板字符串里面的特殊字符直接输出。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">        <span class="keyword">var</span> text1 = <span class="built_in">String</span>.raw <span class="string">`谢永强\t真帅！`</span></span><br><span class="line">        <span class="built_in">console</span>.log(text1)</span><br></pre></td></tr></table></figure>
+<h4 id="在模板字符串书写之前可以之前可以加上一个标记："><a href="#在模板字符串书写之前可以之前可以加上一个标记：" class="headerlink" title="在模板字符串书写之前可以之前可以加上一个标记："></a>在模板字符串书写之前可以之前可以加上一个标记：</h4><p>&emsp;标记名``（模板字符串）：得到是标记函数的返回值<br>&emsp;标记是一个函数：<br>&emsp;该函数的第一个参数是被要插入内容（${}里面的值）分割的字符串数组<br>&emsp;后续的参数是要插入内容（${}里面的值） </p>
+<h2 id="函数："><a href="#函数：" class="headerlink" title="函数："></a>函数：</h2><h3 id="参数默认值："><a href="#参数默认值：" class="headerlink" title="参数默认值："></a>参数默认值：</h3><p>参数默认值，在定义函数时直接给形参赋值，如果调用函数时不传递参数，则使用默认值。<br>在严格模式下（“use strict”）下形参和arguments是脱离的（不在满足一一映射关系），只要给函数加上了参数默认值，该函数会自动变成严格模式下的规则（形参和arguments是脱离的）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">a, b = <span class="number">4</span></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(a + b);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="剩余参数："><a href="#剩余参数：" class="headerlink" title="剩余参数："></a>剩余参数：</h3><p>函数名.length :可得到函数形参的个数<br>解决参数数量不确定情况下的问题。<br>实现方法：在函数是形参中加上 （…数组名）就可以了，用一个数组收集剩下的所有参数。<br>一个函数只能有一个剩余参数。<br>一个函数如果有剩余参数，剩余参数必须是最后一个参数。  </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">a, b, ...args</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">let</span> sum = <span class="number">0</span>;</span><br><span class="line">            sum = sum + a + b;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; args.length; i++) &#123;</span><br><span class="line">                sum += args[i];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> sum;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="展开运算符："><a href="#展开运算符：" class="headerlink" title="展开运算符："></a>展开运算符：</h3><p>作用：将数组的每一项分别提取出来。<br>语法：在要展开的数组和对象前面加上(…数组名 /  …对象名)。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">        <span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>];</span><br><span class="line">        <span class="built_in">console</span>.log(...arr)</span><br><span class="line">输出结果：<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span> <span class="number">7</span> <span class="number">8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">            <span class="attr">name</span>: <span class="string">&#x27;xyq&#x27;</span>,</span><br><span class="line">            <span class="attr">age</span>: <span class="number">20</span>,</span><br><span class="line">            <span class="attr">sex</span>: <span class="string">&#x27;male&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">const</span> obj1 = &#123;</span><br><span class="line">	...obj</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="built_in">console</span>.log(obj1)</span><br></pre></td></tr></table></figure>
+
+<p>new.target :可用来判断函数是否用new来调用函数。  </p>
+<h3 id="箭头函数："><a href="#箭头函数：" class="headerlink" title="箭头函数："></a>箭头函数：</h3><h4 id="this指向："><a href="#this指向：" class="headerlink" title="this指向："></a>this指向：</h4><ol>
+<li>通过对象调用函数，this指向对象</li>
+<li>直接调用函数，this指向全局对象</li>
+<li>如果通过new调用函数，this指向新创建的对象</li>
+<li>如果通过apply、call、bind等调用函数，this指向指定的数据</li>
+<li>如果是dom对象，this指向事件源<h4 id="使用语法"><a href="#使用语法" class="headerlink" title="使用语法"></a>使用语法</h4>箭头函数是一个函数表达式，理论上，任何使用函数表达式的场景都可以使用箭头函数 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">完整语法：</span><br><span class="line"> (参数<span class="number">1</span>, 参数<span class="number">2</span>, ...)=&gt;&#123;</span><br><span class="line">    <span class="comment">//函数体</span></span><br><span class="line">&#125;</span><br><span class="line">如果参数只有一个，可以省略小括号</span><br><span class="line">参数 =&gt; &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">如果箭头函数只有一条返回语句，可以省略大括号，和<span class="keyword">return</span>关键字</span><br><span class="line">参数 =&gt; 返回值</span><br></pre></td></tr></table></figure>
+<h4 id="注意细节"><a href="#注意细节" class="headerlink" title="注意细节"></a>注意细节</h4></li>
+</ol>
+<ul>
+<li>箭头函数中，不存在this、arguments、new.target，如果使用了，则使用的是函数外层的对应的this、arguments、new.target</li>
+<li>箭头函数没有原型</li>
+<li>箭头函数不能作用构造函数使用<h4 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h4><h5 id="临时性使用的函数，并不会可以调用它，比如："><a href="#临时性使用的函数，并不会可以调用它，比如：" class="headerlink" title="临时性使用的函数，并不会可以调用它，比如："></a>临时性使用的函数，并不会可以调用它，比如：</h5></li>
+<li>事件处理函数</li>
+<li>异步处理函数</li>
+<li>其他临时性的函数</li>
+<li>为了绑定外层this的函数</li>
+<li>在不影响其他代码的情况下，保持代码的简洁，最常见的，数组方法中的回调函数</li>
+</ul>
+<h2 id="对象："><a href="#对象：" class="headerlink" title="对象："></a>对象：</h2><h3 id="变量字面量语法："><a href="#变量字面量语法：" class="headerlink" title="变量字面量语法："></a>变量字面量语法：</h3><h4 id="成员速写："><a href="#成员速写：" class="headerlink" title="成员速写："></a>成员速写：</h4><p>如果对象字面量初始化时，成员的名称来自于一个变量，并且和变量的名称相同，则可以进行简写，可将 变量名：变量名  简写成 变量名</p>
+<h4 id="方法速写："><a href="#方法速写：" class="headerlink" title="方法速写："></a>方法速写：</h4><p>可以将：function省略。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">name, age, sex</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> &#123;</span><br><span class="line">                name,</span><br><span class="line">                age,</span><br><span class="line">                sex,</span><br><span class="line">                <span class="function"><span class="title">fuc</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">                    <span class="built_in">console</span>.log(<span class="number">123</span>)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="计算属性名："><a href="#计算属性名：" class="headerlink" title="计算属性名："></a>计算属性名：</h4><p>有的时候，初始化对象时，某些属性名可能来自于某个表达式的值，在ES6，可以使用中括号来表示该属性名是通过计算得到的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">        <span class="keyword">const</span> prop1 = <span class="string">&#x27;name&#x27;</span>;</span><br><span class="line">        <span class="keyword">const</span> prop2 = <span class="string">&#x27;age&#x27;</span>;</span><br><span class="line">        <span class="keyword">const</span> prop3 = <span class="string">&#x27;sex&#x27;</span>;</span><br><span class="line">        <span class="keyword">const</span> obj1 = &#123;</span><br><span class="line">            [prop1]: <span class="string">&#x27;xyq&#x27;</span>,</span><br><span class="line">            [prop2]: <span class="number">20</span>,</span><br><span class="line">             [prop3]: <span class="string">&#x27;男&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">console</span>.log(obj1)</span><br></pre></td></tr></table></figure>
+<h3 id="Object的新增API："><a href="#Object的新增API：" class="headerlink" title="Object的新增API："></a>Object的新增API：</h3><ul>
+<li>Object.is:<br>判断两个对象是否相等，基本和 === 是一致的，除了 NaN和NaN相等 、 +0 和-0不相等</li>
+<li>Object.assign：<br>用于混合对象（可以用展开运算符实现）；<br>缺陷：会更改原来的第一个对象，解决方案：第一个参数传递一个空对象</li>
+<li>Object.getOwnPropertyNames:<br>Object.getOwnPropertyNames方法之前就存在，只不过，官方没有明确要求，对属性的顺序如何排序，如何排序，完全由浏览器厂商决定。<br>ES6规定了该方法返回的数组的排序方式如下：<br>先排数字，并按照升序排序<br>再排其他，按照书写顺序排序</li>
+<li>Object.setPrototypeOf<br>该函数用于设置某个对象的隐式原型<br>比如： Object.setPrototypeOf(obj1, obj2)， 相当于： obj1.<strong>proto</strong> = obj2<h2 id="类："><a href="#类：" class="headerlink" title="类："></a>类：</h2><h3 id="传统的构造函数的问题"><a href="#传统的构造函数的问题" class="headerlink" title="传统的构造函数的问题"></a>传统的构造函数的问题</h3></li>
+<li>属性和原型方法定义分离，降低了可读性</li>
+<li>原型成员可以被枚举</li>
+<li>默认情况下，构造函数仍然可以被当作普通函数使用<h3 id="类的特点"><a href="#类的特点" class="headerlink" title="类的特点"></a>类的特点</h3></li>
+<li>类声明不会被提升，与 let 和 const 一样，存在暂时性死区</li>
+<li>类中的所有代码均在严格模式下执行</li>
+<li>类的所有方法都是不可枚举的</li>
+<li>类的所有方法都无法被当作构造函数使用</li>
+<li>类的构造器必须使用 new 来调用<h3 id="类的语法："><a href="#类的语法：" class="headerlink" title="类的语法："></a>类的语法：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> 类名</span>&#123;</span><br><span class="line"><span class="title">constructor</span>（参数）&#123;</span><br><span class="line">属性值</span><br><span class="line">&#125;</span><br><span class="line">方法名（）&#123;</span><br><span class="line">方法体</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">            <span class="comment">// 构造函数，写属性</span></span><br><span class="line">            <span class="function"><span class="title">constructor</span>(<span class="params">type, name, age, sex</span>)</span> &#123;</span><br><span class="line">                <span class="built_in">this</span>.type = type;</span><br><span class="line">                <span class="built_in">this</span>.name = name;</span><br><span class="line">                <span class="built_in">this</span>.age = age;</span><br><span class="line">                <span class="built_in">this</span>.sex = sex;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 方法</span></span><br><span class="line">            <span class="function"><span class="title">print</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">`【种类】：<span class="subst">$&#123;<span class="built_in">this</span>.type&#125;</span>`</span>);</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">`【名字】：<span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span>`</span>);</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">`【年龄】：<span class="subst">$&#123;<span class="built_in">this</span>.age&#125;</span>`</span>);</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">`【性别】：<span class="subst">$&#123;<span class="built_in">this</span>.sex&#125;</span>`</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="类里面属性的获取和更改："><a href="#类里面属性的获取和更改：" class="headerlink" title="类里面属性的获取和更改："></a>类里面属性的获取和更改：</h3><p>可达到像普通对象一样直接获取，设置属性又不保证安全。 </p>
+<h4 id="获取："><a href="#获取：" class="headerlink" title="获取："></a>获取：</h4><p>可定义一个方法  get 属性名（）{<br>}</p>
+<h4 id="更改："><a href="#更改：" class="headerlink" title="更改："></a>更改：</h4><p>定义一个方法  set 属性名（参数）{<br>}</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">            <span class="function"><span class="title">constructor</span>(<span class="params">name, age</span>)</span> &#123;</span><br><span class="line">                <span class="built_in">this</span>.name = name;</span><br><span class="line">                <span class="built_in">this</span>.age = age;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">set</span> <span class="title">age</span>(<span class="params">val</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (val &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                    val = <span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="built_in">this</span>._age = val;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">get</span> <span class="title">age</span>() &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="built_in">this</span>._age;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="function"><span class="title">print</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="built_in">this</span>._age)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="静态成员："><a href="#静态成员：" class="headerlink" title="静态成员："></a>静态成员：</h3><p>直接定义在类上的属性或方法，在类中用关键字static定义，不用创建实例对象就可以访问的属性，创建的实例对象不可以访问这个属性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">            <span class="keyword">static</span> a = <span class="string">&#x27;123&#x27;</span>;</span><br><span class="line">            <span class="keyword">static</span> <span class="function"><span class="title">b</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="built_in">this</span>.a)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="function"><span class="title">constructor</span>(<span class="params">name, age</span>)</span> &#123;</span><br><span class="line">                <span class="built_in">this</span>.name = name;</span><br><span class="line">                <span class="built_in">this</span>.age = age;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">set</span> <span class="title">age</span>(<span class="params">val</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (val &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                    val = <span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="built_in">this</span>._age = val;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">get</span> <span class="title">age</span>() &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="built_in">this</span>._age;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="function"><span class="title">print</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="built_in">this</span>.age)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">字段初始化器：</span><br><span class="line">可以将一些有固定值的属性直接写在构造函数外面。</span><br><span class="line">   <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">            sex = <span class="string">&quot;男&quot;</span>;</span><br><span class="line">            <span class="keyword">static</span> a = <span class="string">&#x27;123&#x27;</span>;</span><br><span class="line">            <span class="keyword">static</span> <span class="function"><span class="title">b</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="built_in">this</span>.a)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="function"><span class="title">constructor</span>(<span class="params">name, age</span>)</span> &#123;</span><br><span class="line">                <span class="built_in">this</span>.name = name;</span><br><span class="line">                <span class="built_in">this</span>.age = age;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">set</span> <span class="title">age</span>(<span class="params">val</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (val &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                    val = <span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="built_in">this</span>._age = val;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">get</span> <span class="title">age</span>() &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="built_in">this</span>._age;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="function"><span class="title">print</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="built_in">this</span>.age)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="类的继承"><a href="#类的继承" class="headerlink" title="类的继承"></a>类的继承</h3><h6 id="如果两个类A和B，如果可以描述为：B-是-A，则，A和B形成继承关系则："><a href="#如果两个类A和B，如果可以描述为：B-是-A，则，A和B形成继承关系则：" class="headerlink" title="如果两个类A和B，如果可以描述为：B 是 A，则，A和B形成继承关系则："></a>如果两个类A和B，如果可以描述为：B 是 A，则，A和B形成继承关系则：</h6><ul>
+<li>B继承自A</li>
+<li>A派生B</li>
+<li>B是A的子类</li>
+<li>A是B的父类<br>如果A是B的父类，则B会自动拥有A中的所有实例成员。<h4 id="继承的关键字："><a href="#继承的关键字：" class="headerlink" title="继承的关键字："></a>继承的关键字：</h4>extends：继承，用于类的定义<br>super</li>
+</ul>
+<ul>
+<li>直接当作函数调用，表示父类构造函数</li>
+<li>如果当作对象使用，则表示父类的原型<h4 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h4></li>
+<li>ES6要求，如果定义了constructor，并且该类是子类，则必须在constructor的第一行手动调用父类的构造函数</li>
+<li>如果子类不写constructor，则会有默认的构造器，该构造器需要的参数和父类一致，并且自动调用父类构造器<h4 id="【冷知识】"><a href="#【冷知识】" class="headerlink" title="【冷知识】"></a>【冷知识】</h4><h5 id="用JS制作抽象类"><a href="#用JS制作抽象类" class="headerlink" title="用JS制作抽象类"></a>用JS制作抽象类</h5>抽象类：一般是父类，不能通过该类创建对象<br>正常情况下，this的指向，this始终指向具体的类的对象</li>
+</ul>
+<p>getComputerStyle ： 可以获取dom元素的所有css样式<br>window.location.reload();可刷新页面</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag"><i class="fa fa-tag"></i> 前端</a>
+              <a href="/tags/ES6/" rel="tag"><i class="fa fa-tag"></i> ES6</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/12/31/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E9%A1%B5%E5%92%8C%E6%A0%85%E6%A0%BC%E7%B3%BB%E7%BB%9F/" rel="prev" title="bootstrap响应网页和栅格系统">
+                  <i class="fa fa-chevron-left"></i> bootstrap响应网页和栅格系统
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/12/31/%E5%8A%A8%E7%94%BB/" rel="next" title="CSS3动画">
+                  CSS3动画 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">筱</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">140k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">2:07</span>
+  </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

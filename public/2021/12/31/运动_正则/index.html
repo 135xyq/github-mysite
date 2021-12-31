@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="js实现物体的运动，正则表达式的使用，JSON的简单介绍">
+<meta property="og:type" content="article">
+<meta property="og:title" content="运动 正则">
+<meta property="og:url" content="http://example.com/2021/12/31/%E8%BF%90%E5%8A%A8_%E6%AD%A3%E5%88%99/index.html">
+<meta property="og:site_name" content="筱">
+<meta property="og:description" content="js实现物体的运动，正则表达式的使用，JSON的简单介绍">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-12-31T08:21:22.000Z">
+<meta property="article:modified_time" content="2021-12-31T08:42:34.020Z">
+<meta property="article:author" content="筱">
+<meta property="article:tag" content="js">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="DOM">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2021/12/31/%E8%BF%90%E5%8A%A8_%E6%AD%A3%E5%88%99/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2021/12/31/%E8%BF%90%E5%8A%A8_%E6%AD%A3%E5%88%99/","path":"2021/12/31/运动_正则/","title":"运动 正则"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>运动 正则 | 筱</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?4301d11b48139d9c6adb4611ed1fc576"></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">筱</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">21</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">5</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">69</span></a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%90%E5%8A%A8-%E6%AD%A3%E5%88%99"><span class="nav-number">1.</span> <span class="nav-text">运动 正则</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E5%8A%A8"><span class="nav-number">1.1.</span> <span class="nav-text">运动</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#JSON-stringify-json-%E2%80%94-gt-string"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">JSON.stringify(); json — &gt; string</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JSON-parse-string-%E2%80%94-gt-json"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">JSON.parse();  string — &gt; json</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BDJS"><span class="nav-number">1.2.</span> <span class="nav-text">异步加载JS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#js%E5%8A%A0%E8%BD%BD%E7%9A%84%E7%BC%BA%E7%82%B9%EF%BC%9A"><span class="nav-number">1.2.1.</span> <span class="nav-text">js加载的缺点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#javascript-%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BD-%E7%9A%84-%E4%B8%89%E7%A7%8D%E6%96%B9%E6%A1%88"><span class="nav-number">1.2.2.</span> <span class="nav-text">javascript 异步加载 的 三种方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#js%E5%8A%A0%E8%BD%BD%E6%97%B6%E9%97%B4"><span class="nav-number">1.2.3.</span> <span class="nav-text">js加载时间</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">1.3.</span> <span class="nav-text">正则表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%A4%E7%A7%8D%E5%88%9B%E5%BB%BA%E6%96%B9%E5%BC%8F%EF%BC%9A"><span class="nav-number">1.3.1.</span> <span class="nav-text">正则表达式两种创建方式：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%8B%AC%E5%8F%B7"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">方括号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%83%E5%AD%97%E7%AC%A6%EF%BC%88Metacharacter%EF%BC%89"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">元字符（Metacharacter）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8F%E8%AF%8D"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">量词</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RegExp-%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">RegExp 对象属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RegExp-%E5%AF%B9%E8%B1%A1%E6%96%B9%E6%B3%95"><span class="nav-number">1.3.1.5.</span> <span class="nav-text">RegExp 对象方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%94%AF%E6%8C%81%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84-String-%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">1.3.1.6.</span> <span class="nav-text">支持正则表达式的 String 对象的方法</span></a></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="筱"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">筱</p>
+  <div class="site-description" itemprop="description">筱的博客</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">69</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/135xyq" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;135xyq" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:xyq135@gmail.com" title="E-Mail → mailto:xyq135@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/%E7%AD%B1xyq" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;筱xyq" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://plus.google.com/%E8%B0%A2%E6%B0%B8%E5%BC%BA" title="Google → https:&#x2F;&#x2F;plus.google.com&#x2F;谢永强" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/135xyq" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/31/%E8%BF%90%E5%8A%A8_%E6%AD%A3%E5%88%99/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="筱">
+      <meta itemprop="description" content="筱的博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筱">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          运动 正则
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-12-31 16:21:22 / 修改时间：16:42:34" itemprop="dateCreated datePublished" datetime="2021-12-31T16:21:22+08:00">2021-12-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">前端学习笔记</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>4.6k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">js实现物体的运动，正则表达式的使用，JSON的简单介绍</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="运动-正则"><a href="#运动-正则" class="headerlink" title="运动 正则"></a>运动 正则</h1><hr>
+<h2 id="运动"><a href="#运动" class="headerlink" title="运动"></a>运动</h2><p>offsetLeft：当前位置距离左边界距离<br>多物体运动：要给每个物体单独设置自己的定时器<br>回调机制：执行完主题函数再</p>
+<p>JSON是一种传输数据的格式（以对象为样板，本质上就是对象（json的属性名要变成字符串样式），但用途有区别，对象就是本地用的，json是用来传输的）</p>
+<h4 id="JSON-stringify-json-—-gt-string"><a href="#JSON-stringify-json-—-gt-string" class="headerlink" title="JSON.stringify(); json — &gt; string"></a>JSON.stringify(); json — &gt; string</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">        <span class="keyword">var</span> obj = &#123;</span><br><span class="line">            <span class="string">&quot;name&quot;</span>: <span class="string">&quot;xyq&quot;</span>,</span><br><span class="line">            <span class="string">&quot;age&quot;</span>: <span class="number">20</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">JSON</span>.stringify(obj)</span><br><span class="line">   返回结果为</span><br><span class="line"><span class="string">&quot;&#123;\&quot;name\&quot;:\&quot;xyq\&quot;,\&quot;age\&quot;:20&#125;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="JSON-parse-string-—-gt-json"><a href="#JSON-parse-string-—-gt-json" class="headerlink" title="JSON.parse();  string — &gt; json"></a>JSON.parse();  string — &gt; json</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">        <span class="keyword">var</span> obj = &#123;</span><br><span class="line">            <span class="string">&quot;name&quot;</span>: <span class="string">&quot;xyq&quot;</span>,</span><br><span class="line">            <span class="string">&quot;age&quot;</span>: <span class="number">20</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">var</span> json = <span class="built_in">JSON</span>.stringify(obj) </span><br><span class="line">        <span class="built_in">JSON</span>.parse(json)</span><br><span class="line">返回值为：</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">name</span>: <span class="string">&quot;xyq&quot;</span>,</span><br><span class="line">            <span class="attr">age</span>: <span class="number">20</span></span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p>dom树深度优先原则</p>
+<h2 id="异步加载JS"><a href="#异步加载JS" class="headerlink" title="异步加载JS"></a>异步加载JS</h2><h3 id="js加载的缺点："><a href="#js加载的缺点：" class="headerlink" title="js加载的缺点："></a>js加载的缺点：</h3><ul>
+<li>加载工具方法没必要阻塞文档，过得js加载会影响页面效率，一旦网速不好，那么整个网站将等待js加载而不进行后续渲染等工作。</li>
+<li>有些工具方法需要按需加载，用到再加载，不用不加载。</li>
+</ul>
+<h3 id="javascript-异步加载-的-三种方案"><a href="#javascript-异步加载-的-三种方案" class="headerlink" title="javascript 异步加载 的 三种方案"></a>javascript 异步加载 的 三种方案</h3><ol>
+<li>defer 异步加载，但要等到dom文档全部解析完才会被执行。只有IE能用。可以在script内写语句<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span> src=<span class="string">&quot;tools.js&quot;</span> defer=<span class="string">&quot;defer&quot;</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure></li>
+<li>async 异步加载，加载完就执行，async只能加载外部脚本，不能把js写在script 标签里。</li>
+</ol>
+<p>1和2 执行时不阻塞页面<br>3. 创建script，插入到DOM中，加载完毕后callBack。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">    &lt;script&gt;</span><br><span class="line">        <span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">&#x27;script&#x27;</span>);</span><br><span class="line">        script.type = <span class="string">&quot;text/javascript&quot;</span>;</span><br><span class="line">        script.src = <span class="string">&quot;demo.js&quot;</span>;</span><br><span class="line">        <span class="built_in">document</span>.head.appendChild(script);<span class="comment">//执行这一行时js才开始执行</span></span><br><span class="line">    &lt;/script&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">&#x27;script&#x27;</span>);</span><br><span class="line">        script.type = <span class="string">&quot;text/javascript&quot;</span>;</span><br><span class="line">        script.src = <span class="string">&quot;demo.js&quot;</span>;</span><br><span class="line">        script.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; <span class="comment">//会等js文件下载完之后在执行</span></span><br><span class="line">            语句; </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">document</span>.head.appendChild(script);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="js加载时间"><a href="#js加载时间" class="headerlink" title="js加载时间"></a>js加载时间</h3><ol>
+<li><p>创建Document对象，开始解析web页面。解析HTML元素和他们的文本内容后添加Element对象和Text节点到文档中。这个阶段document.readyState = ‘loading’。</p>
+</li>
+<li><p>遇到link外部css，创建线程加载，并继续解析文档。</p>
+</li>
+<li><p>遇到script外部js，并且没有设置async、defer，浏览器加载，并阻塞，等待js加载完成并执行该脚本，然后继续解析文档。</p>
+</li>
+<li><p>遇到script外部js，并且设置有async、defer，浏览器创建线程加载，并继续解析文档。<br>对于async属性的脚本，脚本加载完成后立即执行。（异步禁止使用document.write()）</p>
+</li>
+<li><p>遇到img等，先正常解析dom结构，然后浏览器异步加载src，并继续解析文档。</p>
+</li>
+<li><p>当文档解析完成，document.readyState = ‘interactive’。</p>
+</li>
+<li><p>文档解析完成后，所有设置有defer的脚本会按照顺序执行。（注意与async的不同,但同样禁止使用document.write()）;</p>
+</li>
+<li><p>document对象触发DOMContentLoaded事件，这也标志着程序执行从同步脚本执行阶段，转化为事件驱动阶段。</p>
+</li>
+<li><p>当所有async的脚本加载完成并执行后、img等加载完成后，document.readyState = ‘complete’，window对象触发load事件。</p>
+</li>
+<li><p>从此，以异步响应方式处理用户输入、网络事件等。</p>
+</li>
+</ol>
+<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/jsref/jsref_obj_regexp.asp">正则表达式</a></h2><p>多行字符串（更清晰，通过 \ 将一行的结束符转义）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">        <span class="keyword">var</span> test = <span class="string">&quot;\</span></span><br><span class="line"><span class="string">        &lt;div&gt;&lt;/div&gt;\</span></span><br><span class="line"><span class="string">        &lt;span&gt;&lt;/span&gt;\</span></span><br><span class="line"><span class="string">        &quot;</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="正则表达式两种创建方式："><a href="#正则表达式两种创建方式：" class="headerlink" title="正则表达式两种创建方式："></a>正则表达式两种创建方式：</h3><ol>
+<li><p>直接量(var 变量名  = / 字符串 /属性（可不写）  )<br>var reg = /abc/;</p>
+</li>
+<li><p>new RegExp(var 变量名 = new RegExp(“规则” ，”属性（可不写）”);)</p>
+<p> <code>var reg = new RegExp(&quot;abc&quot;);</code></p>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[ ]:表达式（里面填符合要求的范围）</span><br><span class="line">        <span class="keyword">var</span> reg = <span class="regexp">/[ab][cd][d]/g</span>;</span><br><span class="line">        <span class="keyword">var</span> str = <span class="string">&quot;abcd&quot;</span>;</span><br><span class="line">        str.match(reg)</span><br><span class="line">        返回值：</span><br><span class="line">    	[<span class="string">&quot;bcd&quot;</span>]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">^放在表达式里表示 非（除了）</span><br><span class="line"></span><br><span class="line">         <span class="keyword">var</span> reg = <span class="regexp">/[^a]/</span>;<span class="comment">//匹配第一位不是a的字符串</span></span><br><span class="line">         <span class="keyword">var</span> str = <span class="string">&quot;abcd&quot;</span>;</span><br><span class="line">         str.match(reg)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">（条件 | 条件 |条件）：可表示范围</span><br><span class="line">        <span class="keyword">var</span> reg = <span class="regexp">/(abc|bcd)/g</span>;</span><br><span class="line">        可匹配是abc 或 bcd 的字符串</span><br><span class="line">        </span><br></pre></td></tr></table></figure>
+
+<p>\n : 与第n子表达式个完全一样的匹配条件（n必须为具体的数字）</p>
+<p>var reg = /(\w)\1\1\1/g;   //匹配4个完全一样的字符串（例如 “aaaa”）</p>
+<p>var reg = /(\w)\1(\w)\2/g; //可匹配AABB样式的字符串  </p>
+<h4 id="方括号"><a href="#方括号" class="headerlink" title="方括号"></a>方括号</h4><p>方括号用于查找某个范围内的字符：<br>| 表达式 | 描述  |<br>| :—  | :————— |<br>| [abc]  | 查找方括号之间的任何字符。|<br>| [^abc] | 查找任何不在方括号之间的字符。|<br>| [0-9] | 查找任何从 0 至 9 的数字。|<br>| [a-z] | 查找任何从小写 a 到小写 z 的字符。|<br>| [A-Z] | 查找任何从大写 A 到大写 Z 的字符。|<br>| [A-z] | 查找任何从大写 A 到小写 z 的字符。|<br>| [adgk] | 查找给定集合内的任何字符。|<br>| [^adgk] | 查找给定集合外的任何字符。|<br>| (red|blue|green) | 查找任何指定的选项。|<br>|</p>
+<h4 id="元字符（Metacharacter）"><a href="#元字符（Metacharacter）" class="headerlink" title="元字符（Metacharacter）"></a>元字符（Metacharacter）</h4><p>是拥有特殊含义的字符：<br>| 元字符 | 描述 |<br>| :—- | :—- |<br>|.查找单个字符，除了换行和行结束符.<br>| \w |     [ 0 - 9A-z_]查找单词字符。<br>| \W | 查找非单词字符。<br>| \d |    [ 0 - 9]查找数字。<br>| \D | 查找非数字字符。<br>| \s | 查找空白字符。<br>| \S | 查找非空白字符。<br>| \b | 匹配单词边界。<br>| \B | 匹配非单词边界。<br>| \0 | 查找 NUL 字符。<br>| \n | 查找换行符。<br>| \f | 查找换页符。<br>| \r | 查找回车符。<br>| \t | 查找制表符。<br>| \v | 查找垂直制表符。<br>| \x | xx查找以八进制数 xxx 规定的字符。<br>| \x | dd查找以十六进制数 dd 规定的字符。<br>| \u | xxxx查找以十六进制数 xxxx 规定的 Unicode 字符。<br>|</p>
+<h4 id="量词"><a href="#量词" class="headerlink" title="量词"></a>量词</h4><table>
+<thead>
+<tr>
+<th align="left">量词</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">n+</td>
+<td align="left">匹配任何包含至少一个 n 的字符串。</td>
+</tr>
+<tr>
+<td align="left">n*</td>
+<td align="left">匹配任何包含零个或多个 n 的字符串。</td>
+</tr>
+<tr>
+<td align="left">n?</td>
+<td align="left">匹配任何包含零个或一个 n 的字符串。</td>
+</tr>
+<tr>
+<td align="left">n{X}</td>
+<td align="left">匹配包含 X 个 n 的序列的字符串。</td>
+</tr>
+<tr>
+<td align="left">n{X,Y}</td>
+<td align="left">匹配包含 X 至 Y 个 n 的序列的字符串。</td>
+</tr>
+<tr>
+<td align="left">n{X,}</td>
+<td align="left">匹配包含至少 X 个 n 的序列的字符串。</td>
+</tr>
+<tr>
+<td align="left">n$</td>
+<td align="left">匹配任何结尾为 n 的字符串。</td>
+</tr>
+<tr>
+<td align="left">^n</td>
+<td align="left">匹配任何开头为 n 的字符串。</td>
+</tr>
+<tr>
+<td align="left">?=n</td>
+<td align="left">匹配任何其后紧接指定字符串 n 的字符串。</td>
+</tr>
+<tr>
+<td align="left">?!n</td>
+<td align="left">匹配任何其后没有紧接指定字符串 n 的字符串。</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<h4 id="RegExp-对象属性"><a href="#RegExp-对象属性" class="headerlink" title="RegExp 对象属性"></a>RegExp 对象属性</h4><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>FF</th>
+<th>IE</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>globalRegExp</td>
+<td>对象是否具有标志 g</td>
+<td>1</td>
+<td>4</td>
+</tr>
+<tr>
+<td>ignoreCaseRegExp</td>
+<td>对象是否具有标志 i</td>
+<td>。1</td>
+<td>4</td>
+</tr>
+<tr>
+<td>lastIndex</td>
+<td>一个整数，标示开始下一次匹配的字符位</td>
+<td>1</td>
+<td>4</td>
+</tr>
+<tr>
+<td>multilineRegExp</td>
+<td>对象是否具有标志 m</td>
+<td>。1</td>
+<td>4</td>
+</tr>
+<tr>
+<td>source</td>
+<td>正则表达式的源文本。</td>
+<td>1</td>
+<td>4</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id="RegExp-对象方法"><a href="#RegExp-对象方法" class="headerlink" title="RegExp 对象方法"></a>RegExp 对象方法</h4><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+<th>FF</th>
+<th>IE</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>compile</td>
+<td>编译正则表达式。</td>
+<td>1</td>
+<td>4</td>
+</tr>
+<tr>
+<td>exec</td>
+<td>检索字符串中指定的值。返回找到的值，并确定其位置。</td>
+<td>1</td>
+<td>4</td>
+</tr>
+<tr>
+<td>test</td>
+<td>检索字符串中指定的值。返回 true 或 false。</td>
+<td>1</td>
+<td>4</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id="支持正则表达式的-String-对象的方法"><a href="#支持正则表达式的-String-对象的方法" class="headerlink" title="支持正则表达式的 String 对象的方法"></a>支持正则表达式的 String 对象的方法</h4><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+<th>FF</th>
+<th>IE</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>search</td>
+<td>检索与正则表达式相匹配的值。</td>
+<td>1</td>
+<td>4</td>
+</tr>
+<tr>
+<td>match</td>
+<td>找到一个或多个正则表达式的匹配。</td>
+<td>1</td>
+<td>4</td>
+</tr>
+<tr>
+<td>replace</td>
+<td>替换与正则表达式匹配的子串。</td>
+<td>1</td>
+<td>4</td>
+</tr>
+<tr>
+<td>split</td>
+<td>把字符串分割为字符串数组。</td>
+<td>1</td>
+<td>4</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">        <span class="keyword">var</span> str = <span class="string">&quot;aa&quot;</span>;</span><br><span class="line">        <span class="built_in">console</span>.log(str.replace(<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>));</span><br><span class="line">打印结果为ba</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;aa&quot;</span>;</span><br><span class="line">        <span class="keyword">var</span> reg = <span class="regexp">/a/g</span>;</span><br><span class="line">        <span class="built_in">console</span>.log(str.replace(reg, <span class="string">&quot;b&quot;</span>));    </span><br><span class="line">打印结果为bb                      </span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;aabb&quot;</span>;</span><br><span class="line">        <span class="keyword">var</span> reg = <span class="regexp">/(\w)\1(\w)\2/g</span>;</span><br><span class="line">        <span class="built_in">console</span>.log(str.replace(reg, <span class="string">&quot;$2$2$1$1&quot;</span>)); <span class="comment">//可以通过 $n 获取第n 个子表达式的匹配条件</span></span><br><span class="line">打印结果为bbaa</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;the-first-name&quot;</span>;</span><br><span class="line">        <span class="keyword">var</span> reg = <span class="regexp">/-(\w)/g</span>;</span><br><span class="line">        <span class="built_in">console</span>.log(str.replace(reg, <span class="function"><span class="keyword">function</span>(<span class="params">$, $<span class="number">1</span></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> $<span class="number">1.</span>toUpperCase();</span><br><span class="line">        &#125;))</span><br><span class="line">打印结果为theFirstName</span><br></pre></td></tr></table></figure>
+
+
+<p>正则表达式默认为贪婪匹配（总是往最大的方向去匹配）<br>取消贪婪匹配（匹配最短）（在每个量词后面加上一个 ？）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">        <span class="keyword">var</span> reg = <span class="regexp">/a&#123;3,5&#125;?/g</span>;</span><br><span class="line">        <span class="keyword">var</span> reg1 = <span class="regexp">/a&#123;3,5&#125;/g</span>;</span><br><span class="line">        <span class="keyword">var</span> str = <span class="string">&quot;aaaaaaaaaaaaaaaa&quot;</span>;</span><br><span class="line">        <span class="built_in">console</span>.log(str.match(reg));</span><br><span class="line">        <span class="built_in">console</span>.log(str.match(reg1));</span><br><span class="line"></span><br><span class="line">打印结果为：</span><br><span class="line">[<span class="string">&quot;aaa&quot;</span>, <span class="string">&quot;aaa&quot;</span>, <span class="string">&quot;aaa&quot;</span>, <span class="string">&quot;aaa&quot;</span>, <span class="string">&quot;aaa&quot;</span>]</span><br><span class="line">[<span class="string">&quot;aaaaa&quot;</span>, <span class="string">&quot;aaaaa&quot;</span>, <span class="string">&quot;aaaaa&quot;</span>]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/^(?!\d+$)(?![A-z]+$)[0-9A-z]&#123;8,16&#125;$/</span>;</span><br><span class="line">匹配密码<span class="number">8</span> - <span class="number">16</span>位不能只有数字或字母</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/js/" rel="tag"><i class="fa fa-tag"></i> js</a>
+              <a href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag"><i class="fa fa-tag"></i> 前端</a>
+              <a href="/tags/DOM/" rel="tag"><i class="fa fa-tag"></i> DOM</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/12/31/%E9%80%89%E6%8B%A9%E5%99%A8/" rel="prev" title="CSS3选择器">
+                  <i class="fa fa-chevron-left"></i> CSS3选择器
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/12/31/%E7%BD%91%E7%BB%9C%E7%9A%84%E4%BD%BF%E7%94%A8/" rel="next" title="网络的基本知识">
+                  网络的基本知识 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">筱</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">140k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">2:07</span>
+  </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
