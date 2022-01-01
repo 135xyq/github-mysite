@@ -2,7 +2,9 @@
 title: js基本语法
 date: 2021-12-31 16:21:22
 description: js的基本语法和浏览器的介绍
-categories: "前端学习笔记"
+categories: 
+    - 前端学习笔记
+    - js
 tags: 
   - js
   - 前端

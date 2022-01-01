@@ -2,7 +2,9 @@
 title: ES6新增的数组API
 date: 2021-12-31 16:21:22
 description: ES6中新增的数组API包括：静态方法：Array.of、Array.from和实例方法find、findIndex、copyWithin和includes的使用
-categories: "前端学习笔记"
+categories: 
+	- 前端学习笔记
+	- ES6
 tags: 
 	- bom
 	- 前端

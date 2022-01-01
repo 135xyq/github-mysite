@@ -2,7 +2,9 @@
 title: js中常用的数组方法
 date: 2021-12-31 16:21:22
 description: js数组方法(map,forEach、some、filter、reduce等的使用)，属性和特性的关系与区别
-categories: "前端学习笔记"
+categories: 
+    - 前端学习笔记
+    - js
 tags: 
   - js
   - 前端

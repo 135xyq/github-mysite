@@ -2,7 +2,9 @@
 title: 常用的git操作
 date: 2021-12-31 16:21:22
 description: 使用git的常用命令，包括.gitignore的编写规则
-categories: "前端学习笔记"
+categories: 
+	- 前端学习笔记
+	- 工具类
 tags: 
 	- git
 	- 前端

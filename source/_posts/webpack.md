@@ -2,7 +2,9 @@
 title: webpack的使用
 date: 2021-12-31 16:21:22
 description: webpack的使用
-categories: "前端学习笔记"
+categories: 
+  - 前端学习笔记
+  - 前端工程化
 tags: 
   - webpack
   - 前端

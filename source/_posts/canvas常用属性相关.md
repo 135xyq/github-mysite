@@ -2,7 +2,10 @@
 title: canvas属性
 date: 2021-12-31 16:21:22
 description: 经常使用到的canvas的属性和使用方法
-categories: "前端学习笔记"
+categories: 
+	- 前端学习笔记
+	- HTML
+
 tags: 
   - HTML
   - 前端

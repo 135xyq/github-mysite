@@ -2,7 +2,9 @@
 title: less的基本介绍
 date: 2021-12-31 16:21:22
 description: less的基本介绍和语法知识
-categories: "前端学习笔记"
+categories: 
+  - 前端学习笔记
+  - less
 tags: 
   - less
   - 前端

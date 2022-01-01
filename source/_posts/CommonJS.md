@@ -2,7 +2,9 @@
 title: CommonJS
 date: 2021-12-31 16:21:22
 description: CommonJS的介绍
-categories: "前端学习笔记"
+categories: 
+	- 前端学习笔记
+	- ES6
 tags: 
   - CommonJS
   - 前端

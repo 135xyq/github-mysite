@@ -2,7 +2,9 @@
 title: Fetch Api
 date: 2021-12-31 16:21:22
 description: Fetch Api的使用、原理
-categories: "前端学习笔记"
+categories: 
+  - 前端学习笔记
+  - ES6
 tags: 
   - ES6
   - 前端

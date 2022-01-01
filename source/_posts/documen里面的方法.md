@@ -2,7 +2,9 @@
 title: document常用方法
 date: 2021-12-31 16:21:22
 description: document的介绍，以及常见的dom操作（赠、删、改、查）
-categories: "前端学习笔记"
+categories: 
+    - 前端学习笔记
+    - js
 tags: 
     - DOM
     - js

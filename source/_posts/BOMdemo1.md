@@ -2,7 +2,9 @@
 title: BOMdemo1
 date: 2021-12-31 16:21:22
 description: BOM的相关知识点
-categories: "前端学习笔记"
+categories: 
+	- 前端学习笔记
+	- BOM
 tags: 
 	- bom
 	- 前端
