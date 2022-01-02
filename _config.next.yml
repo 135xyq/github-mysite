@@ -87,6 +87,7 @@ menu:
   tags: /tags/ || fa fa-tags
   categories: /categories/ || fa fa-th
   archives: /archives/ || fa fa-archive
+  # projects: /project/ || fa fa-project
   #schedule: /schedule/ || fa fa-calendar
   # guestbook: /guestbook/ || fa fa-book
   # sitemap: /sitemap.xml || fa fa-sitemap
