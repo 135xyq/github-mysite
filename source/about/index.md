@@ -5,6 +5,17 @@ type: about
 ---
 
 
+[我的博客园](https://www.cnblogs.com/xyq135/)
+
+[![cnblogs](../images/cnblogs.jpg)](https://www.cnblogs.com/xyq135/)
+
+
+
+
+[我的个人空间](https://135xyq.github.io/my-site/)
+
+[![mysite](../images/mysite.jpg)](https://135xyq.github.io/my-site/)
+
 
 
 [聊天机器人](https://135xyq.github.io/talk/)
@@ -58,17 +69,35 @@ type: about
 
 
 
-[我的博客园](https://www.cnblogs.com/xyq135/)
 
-[![cnblogs](../images/cnblogs.jpg)](https://www.cnblogs.com/xyq135/)
+[拖尾特效](https://135xyq.github.io/trailingEffects/)
 
-
-
+[![traillingEffects](../images/traillingEffects.jpg)](https://135xyq.github.io/trailingEffects/)
 
 
-[我的个人空间](https://135xyq.github.io/my-site/)
 
-[![mysite](../images/mysite.jpg)](https://135xyq.github.io/my-site/)
+[京东页面仿写](https://135xyq.github.io/jd/)
+
+[![jd](../images/jd.jpg)](https://135xyq.github.io/jd/)
+
+
+[转轴展开图片](https://135xyq.github.io/unflodPictures/)
+
+[![unflodPictures](../images/unflodPictures.jpg)](https://135xyq.github.io/unflodPictures/)
+
+
+[扫雷小游戏](https://135xyq.github.io/mineClearance/)
+
+[![mineClearance](../images/mineClearance.jpg)](https://135xyq.github.io/mineClearance/)
+
+
+[贪吃蛇小游戏](https://135xyq.github.io/gluttonousSnake/)
+
+[![gluttonousSnake](../images/gluttonousSnake.jpg)](https://135xyq.github.io/gluttonousSnake/)
+
+
+
+
 
 
 
