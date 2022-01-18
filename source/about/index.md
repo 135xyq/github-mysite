@@ -95,6 +95,8 @@ type: about
 
 [![gluttonousSnake](../images/gluttonousSnake.jpg)](https://135xyq.github.io/gluttonousSnake/)
 
+[烟花](https://135xyq.github.io/happy-new-year/)
+[![happy-new-year](../images/happy-new-year.jpg)](https://135xyq.github.io/gluttonousSnake/)
 
 
 
