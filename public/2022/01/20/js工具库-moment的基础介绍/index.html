@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="日期库moment的语法介绍">
+<meta property="og:type" content="article">
+<meta property="og:title" content="moment工具库的简单使用">
+<meta property="og:url" content="http://example.com/2022/01/20/js%E5%B7%A5%E5%85%B7%E5%BA%93-moment%E7%9A%84%E5%9F%BA%E7%A1%80%E4%BB%8B%E7%BB%8D/index.html">
+<meta property="og:site_name" content="筱">
+<meta property="og:description" content="日期库moment的语法介绍">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-01-20T06:08:12.000Z">
+<meta property="article:modified_time" content="2022-01-20T06:14:12.684Z">
+<meta property="article:author" content="筱">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="moment">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2022/01/20/js%E5%B7%A5%E5%85%B7%E5%BA%93-moment%E7%9A%84%E5%9F%BA%E7%A1%80%E4%BB%8B%E7%BB%8D/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/01/20/js%E5%B7%A5%E5%85%B7%E5%BA%93-moment%E7%9A%84%E5%9F%BA%E7%A1%80%E4%BB%8B%E7%BB%8D/","path":"2022/01/20/js工具库-moment的基础介绍/","title":"moment工具库的简单使用"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>moment工具库的简单使用 | 筱</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?4301d11b48139d9c6adb4611ed1fc576"></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">筱</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">34</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">23</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">114</span></a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#moment-%E5%AE%98%E7%BD%91"><span class="nav-number">1.</span> <span class="nav-text">moment   官网</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E6%9E%90%E6%96%B9%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">解析方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B5%8B%E5%80%BC%E5%8F%96%E5%80%BC%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">赋值取值方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E6%96%B9%E6%B3%95"><span class="nav-number">1.3.</span> <span class="nav-text">查询方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BD%E9%99%85%E5%8C%96%E3%80%81%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%B9%E6%B3%95"><span class="nav-number">1.4.</span> <span class="nav-text">国际化、自定义方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%B6%E9%95%BF%E6%96%B9%E6%B3%95"><span class="nav-number">1.5.</span> <span class="nav-text">时长方法</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="筱"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">筱</p>
+  <div class="site-description" itemprop="description">筱的博客</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">114</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/135xyq" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;135xyq" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:xyq135@gmail.com" title="E-Mail → mailto:xyq135@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/%E7%AD%B1xyq" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;筱xyq" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://plus.google.com/%E8%B0%A2%E6%B0%B8%E5%BC%BA" title="Google → https:&#x2F;&#x2F;plus.google.com&#x2F;谢永强" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/135xyq" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/20/js%E5%B7%A5%E5%85%B7%E5%BA%93-moment%E7%9A%84%E5%9F%BA%E7%A1%80%E4%BB%8B%E7%BB%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="筱">
+      <meta itemprop="description" content="筱的博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筱">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          moment工具库的简单使用
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-01-20 14:08:12 / 修改时间：14:14:12" itemprop="dateCreated datePublished" datetime="2022-01-20T14:08:12+08:00">2022-01-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">前端学习笔记</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/js%E5%B7%A5%E5%85%B7%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">js工具库</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2022/01/20/js%E5%B7%A5%E5%85%B7%E5%BA%93-moment%E7%9A%84%E5%9F%BA%E7%A1%80%E4%BB%8B%E7%BB%8D/#SOHUCS" itemprop="discussionUrl">
+        <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2022/01/20/js工具库-moment的基础介绍/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>13k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>11 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">日期库moment的语法介绍</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="moment-官网"><a href="#moment-官网" class="headerlink" title="moment   官网"></a><a target="_blank" rel="noopener" href="http://momentjs.cn/">moment</a>   <a target="_blank" rel="noopener" href="https://momentjs.com/">官网</a></h1><hr>
+<h2 id="解析方法"><a href="#解析方法" class="headerlink" title="解析方法"></a>解析方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">//解析</span></span><br><span class="line">        <span class="comment">//moment() </span></span><br><span class="line">        <span class="built_in">console</span>.log(moment());</span><br><span class="line">        <span class="comment">//moment(String)</span></span><br><span class="line">        <span class="built_in">console</span>.log(moment(<span class="string">&#x27;2013-02-08&#x27;</span>)); <span class="comment">//返回2013年2月8号的日期对象</span></span><br><span class="line">        <span class="built_in">console</span>.log(</span><br><span class="line">            moment(<span class="string">&#x27;2013-039&#x27;</span>), <span class="comment">//返回2013年的第39天，2013年2月8号</span></span><br><span class="line">            moment(<span class="string">&#x27;2013050&#x27;</span>), <span class="comment">//返回2013年的第50天，2013年2月19号</span></span><br><span class="line">            moment(<span class="string">&#x27;2013W065&#x27;</span>), <span class="comment">//返回2013年的第6个星期的第5天，2013年2月8号（W表示星期）</span></span><br><span class="line">            moment(<span class="string">&#x27;2013-02-08T09&#x27;</span>), <span class="comment">//返回2013年2月8号9点（T表示时间）</span></span><br><span class="line">        );</span><br><span class="line">        <span class="built_in">console</span>.log(moment(<span class="string">&#x27;kaivon&#x27;</span>)); <span class="comment">//警告，同时照样能返回那个对象，不过对象里的参数的值是不正确的</span></span><br><span class="line">        <span class="comment">//moment(String) 带格式 </span></span><br><span class="line">        <span class="built_in">console</span>.log(moment(<span class="string">&quot;12-25-1995&quot;</span>, <span class="string">&quot;MM-DD-YYYY&quot;</span>));</span><br><span class="line">        <span class="built_in">console</span>.log(moment(<span class="string">&quot;12/25/1995&quot;</span>, <span class="string">&quot;LL&quot;</span>));</span><br><span class="line">        <span class="comment">//moment(String) 多个格式 </span></span><br><span class="line">        <span class="built_in">console</span>.log(moment(<span class="string">&quot;29-06-1995&quot;</span>, [<span class="string">&quot;MM-DD-YYYY&quot;</span>, <span class="string">&quot;DD-MM&quot;</span>, <span class="string">&quot;DD-MM-YYYY&quot;</span>]));</span><br><span class="line">        <span class="comment">//moment(String) 特殊格式 </span></span><br><span class="line">        <span class="built_in">console</span>.log(moment(<span class="string">&quot;2010-01-01T05:06:07&quot;</span>, moment.ISO_8601));</span><br><span class="line">        <span class="comment">//moment(Object) </span></span><br><span class="line">        <span class="built_in">console</span>.log(moment(&#123;</span><br><span class="line">            <span class="attr">year</span>: <span class="number">2010</span>,</span><br><span class="line">            <span class="attr">month</span>: <span class="number">3</span>,</span><br><span class="line">            <span class="attr">day</span>: <span class="number">5</span>,</span><br><span class="line">            <span class="attr">hour</span>: <span class="number">15</span>,</span><br><span class="line">            <span class="attr">minute</span>: <span class="number">10</span>,</span><br><span class="line">            <span class="attr">second</span>: <span class="number">3</span>,</span><br><span class="line">            <span class="attr">millisecond</span>: <span class="number">123</span></span><br><span class="line">        &#125;)); <span class="comment">//注意：这里的月份也是从0开始，此时对应的是4月</span></span><br><span class="line">        <span class="comment">//moment(Number) </span></span><br><span class="line">        <span class="built_in">console</span>.log(moment(<span class="number">1318781876406</span>)); <span class="comment">//这个参数为毫秒数</span></span><br><span class="line">        <span class="comment">//unix()</span></span><br><span class="line">        <span class="built_in">console</span>.log(moment.unix(<span class="number">1318781876406</span> / <span class="number">1000</span>)); <span class="comment">//这个参数为秒数</span></span><br><span class="line">        <span class="comment">//moment(Date)</span></span><br><span class="line">        <span class="built_in">console</span>.log(moment(<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">2011</span>, <span class="number">9</span>, <span class="number">16</span>)));</span><br><span class="line">        <span class="comment">//moment(Number[])  参数为一个数组 [year, month, day, hour, minute, second, millisecond]</span></span><br><span class="line">        <span class="built_in">console</span>.log(moment([<span class="number">2010</span>, <span class="number">1</span>, <span class="number">14</span>, <span class="number">15</span>, <span class="number">25</span>, <span class="number">50</span>, <span class="number">125</span>])); <span class="comment">//注意月份是从0开始的，这里对应的是2月</span></span><br><span class="line">        <span class="comment">//moment(JSONDate) </span></span><br><span class="line">        <span class="built_in">console</span>.log(moment(<span class="string">&quot;/Date(1198908717056-0700)/&quot;</span>)); <span class="comment">//前面一串数字为时间戳，-后面的是时区</span></span><br><span class="line">        <span class="comment">//moment(Moment) 参数为一个moment对象，用于克隆</span></span><br><span class="line">        <span class="keyword">var</span> a = moment([<span class="number">2012</span>]);</span><br><span class="line">        <span class="keyword">var</span> b = moment(a);</span><br><span class="line">        <span class="built_in">console</span>.log(a.valueOf() === b.valueOf());</span><br><span class="line">        <span class="comment">//clone()   也可以使用clone去克隆</span></span><br><span class="line">        <span class="keyword">var</span> a = moment([<span class="number">2008</span>]);</span><br><span class="line">        <span class="keyword">var</span> b = a.clone();</span><br><span class="line">        <span class="built_in">console</span>.log(a, b);</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">            GMT 世界时，格林尼治标准时间 </span></span><br><span class="line"><span class="comment">            UTC 协调世界时，世界统一时间、世界标准时间</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="comment">//utc()</span></span><br><span class="line">        <span class="built_in">console</span>.log(moment().format()); <span class="comment">//GMT //默认为本地当前时间，东八区的时间（+08:00）</span></span><br><span class="line">        <span class="built_in">console</span>.log(moment.utc().format()); <span class="comment">//UTC       //UTC的时间（世界标准时间，位于0时区，时区用Z表示，它与北京时间相差8个小时）</span></span><br><span class="line">        <span class="comment">//isValid()</span></span><br><span class="line">        <span class="built_in">console</span>.log(</span><br><span class="line">            moment([<span class="number">2015</span>, <span class="number">25</span>, <span class="number">35</span>]).isValid(), <span class="comment">//false</span></span><br><span class="line">            moment([<span class="number">2015</span>, <span class="number">10</span>, <span class="number">35</span>]).invalidAt(), <span class="comment">//2</span></span><br><span class="line">        );</span><br></pre></td></tr></table></figure>
+
+<h2 id="赋值取值方法"><a href="#赋值取值方法" class="headerlink" title="赋值取值方法"></a>赋值取值方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">        <span class="built_in">console</span>.log(moment().seconds() === <span class="keyword">new</span> <span class="built_in">Date</span>().getSeconds()); <span class="comment">//true</span></span><br><span class="line">        <span class="built_in">console</span>.log(moment.utc().seconds() === <span class="keyword">new</span> <span class="built_in">Date</span>().getUTCSeconds()); <span class="comment">//true</span></span><br><span class="line">        <span class="comment">//millisecond()/milliseconds()  获取或设置毫秒</span></span><br><span class="line">        <span class="built_in">console</span>.log(moment().millisecond());</span><br><span class="line">        <span class="built_in">console</span>.log(moment().milliseconds());</span><br><span class="line">        <span class="built_in">console</span>.log(moment().millisecond(<span class="number">100</span>).valueOf());</span><br><span class="line">        <span class="built_in">console</span>.log(moment().milliseconds(<span class="number">100</span>).valueOf());</span><br><span class="line">        <span class="comment">//second()/seconds()    获取/设置秒</span></span><br><span class="line">        <span class="comment">//minute()/minutes()    获取/设置分</span></span><br><span class="line">        <span class="comment">//hour()/hours()        获取/设置小时</span></span><br><span class="line">        <span class="comment">//date()/dates()        获取/设置日期</span></span><br><span class="line">        <span class="comment">//day()/days()          获取/设置星期</span></span><br><span class="line">        <span class="built_in">console</span>.log(</span><br><span class="line">            moment().day(), <span class="comment">//1</span></span><br><span class="line">            moment().day(<span class="string">&#x27;Sunday&#x27;</span>), <span class="comment">//设置星期的时候可以传入一个星期的英文单词</span></span><br><span class="line">        );</span><br><span class="line">        <span class="comment">//weekday() 根据语言环境获获取/设置星期，根据语言环境获取或设置星期几</span></span><br><span class="line">        moment.locale(<span class="string">&#x27;zh-cn&#x27;</span>); <span class="comment">//把当前的语言环境设置为中文</span></span><br><span class="line">        <span class="built_in">console</span>.log(</span><br><span class="line">            moment().weekday(), <span class="comment">//0 </span></span><br><span class="line">            moment().weekday(<span class="number">0</span>), <span class="comment">//0 //英文下是周日，中文下是周一</span></span><br><span class="line">        );</span><br><span class="line">        <span class="comment">//dayOfYear()   获取或设置年份的日期（今天是今年的第几天）</span></span><br><span class="line">        <span class="built_in">console</span>.log(moment().dayOfYear()); <span class="comment">//111</span></span><br><span class="line">        <span class="built_in">console</span>.log(moment().dayOfYear(<span class="number">1</span>));</span><br><span class="line">        <span class="comment">//week()/weeks()    获取或设置年份的星期（当前星期是今年的第几个星期）</span></span><br><span class="line">        <span class="built_in">console</span>.log(moment().week()); <span class="comment">//17</span></span><br><span class="line">        <span class="built_in">console</span>.log(moment([<span class="number">2021</span>, <span class="number">4</span>, <span class="number">20</span>]).week()); <span class="comment">//20</span></span><br><span class="line">        <span class="comment">//month()/months()  获取或设置月份，设置时范围为0-11，还支持月份名称</span></span><br><span class="line">        <span class="built_in">console</span>.log(moment().month()); <span class="comment">//3</span></span><br><span class="line">        <span class="built_in">console</span>.log(moment().month(<span class="string">&#x27;July&#x27;</span>)); <span class="comment">//3</span></span><br><span class="line">        <span class="comment">//quarter()/quarters()  获取或设置季度</span></span><br><span class="line">        <span class="built_in">console</span>.log(moment().quarter()); <span class="comment">//2 </span></span><br><span class="line">        <span class="built_in">console</span>.log(moment().quarter(<span class="number">4</span>)); <span class="comment">//2 </span></span><br><span class="line">        <span class="comment">//year()/years()    获取或设置年份</span></span><br><span class="line">        <span class="built_in">console</span>.log(moment().year());</span><br><span class="line">        <span class="built_in">console</span>.log(moment().year(<span class="number">2088</span>));</span><br><span class="line">        <span class="comment">//weekYear()</span></span><br><span class="line">        <span class="built_in">console</span>.log(moment([<span class="number">2020</span>, <span class="number">0</span>, <span class="number">1</span>]).weekYear());</span><br><span class="line">        <span class="built_in">console</span>.log(moment([<span class="number">2020</span>, <span class="number">11</span>, <span class="number">31</span>]).weekYear());</span><br><span class="line">        <span class="comment">//weeksInYear() 根据语言环境获取当前 moment 年份的周数</span></span><br><span class="line">        <span class="built_in">console</span>.log(moment().weeksInYear()); <span class="comment">//52</span></span><br><span class="line">        <span class="comment">//get() 获取日期</span></span><br><span class="line">        <span class="built_in">console</span>.log(moment().get(<span class="string">&#x27;year&#x27;</span>));</span><br><span class="line">        <span class="built_in">console</span>.log(moment().get(<span class="string">&#x27;M&#x27;</span>));</span><br><span class="line">        <span class="built_in">console</span>.log(moment().get(<span class="string">&#x27;date&#x27;</span>));</span><br><span class="line">        <span class="comment">//set() 设置日期</span></span><br><span class="line">        <span class="built_in">console</span>.log(</span><br><span class="line">            moment().set(<span class="string">&#x27;year&#x27;</span>, <span class="number">2030</span>),</span><br><span class="line">            moment().set(<span class="string">&#x27;month&#x27;</span>, <span class="number">8</span>),</span><br><span class="line">            moment().set(&#123;</span><br><span class="line">                <span class="string">&#x27;year&#x27;</span>: <span class="number">2008</span>,</span><br><span class="line">                <span class="string">&#x27;month&#x27;</span>: <span class="number">7</span>,</span><br><span class="line">                <span class="string">&#x27;date&#x27;</span>: <span class="number">8</span></span><br><span class="line">            &#125;),</span><br><span class="line">        );</span><br><span class="line">        <span class="comment">//max() 对比多个日期，返回最大的那个日期</span></span><br><span class="line">        <span class="comment">//min() 对比多个日期，返回最小的那个日期</span></span><br><span class="line">        <span class="keyword">var</span> a = moment(<span class="string">&#x27;2019-10-15&#x27;</span>);</span><br><span class="line">        <span class="keyword">var</span> b = moment(&#123;</span><br><span class="line">            <span class="attr">year</span>: <span class="number">2010</span>,</span><br><span class="line">            <span class="attr">month</span>: <span class="number">3</span>,</span><br><span class="line">            <span class="attr">date</span>: <span class="number">5</span></span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">var</span> c = moment([<span class="number">2020</span>, <span class="number">10</span>, <span class="number">20</span>]);</span><br><span class="line">        <span class="built_in">console</span>.log(moment.max(a, b, c)); <span class="comment">//c</span></span><br><span class="line">        <span class="built_in">console</span>.log(moment.min(a, b, c)); <span class="comment">//b</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="查询方法"><a href="#查询方法" class="headerlink" title="查询方法"></a>查询方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">       <span class="comment">//isBefore()    检查一个时间是否在另一个时间之前，默认是都转成毫秒数进行计算</span></span><br><span class="line">        <span class="built_in">console</span>.log(moment(<span class="string">&#x27;2010-10-20&#x27;</span>).isBefore()); <span class="comment">//true  没给参数默认为现在的时间</span></span><br><span class="line">        <span class="built_in">console</span>.log(moment(<span class="string">&#x27;2010-10-20&#x27;</span>).isBefore(<span class="string">&#x27;2010-10-19&#x27;</span>)); <span class="comment">//false 第一个日期是否在第二个日期之前</span></span><br><span class="line">        <span class="built_in">console</span>.log(moment(<span class="string">&#x27;2009-10-20&#x27;</span>).isBefore(<span class="string">&#x27;2010-10-19&#x27;</span>, <span class="string">&#x27;year&#x27;</span>)); <span class="comment">//false 二个参数为对比的单位，可以给的有year month week isoWeek day hour minute second</span></span><br><span class="line">        <span class="built_in">console</span>.log(moment(<span class="string">&#x27;2010-10-20&#x27;</span>).isBefore(<span class="string">&#x27;2008-12-31&#x27;</span>, <span class="string">&#x27;month&#x27;</span>)); <span class="comment">//false</span></span><br><span class="line">        <span class="comment">//isSame()  检查两个时间是否相同</span></span><br><span class="line">        <span class="built_in">console</span>.log(moment(<span class="string">&#x27;2010-10-20&#x27;</span>).isSame(<span class="string">&#x27;2010-10-20&#x27;</span>));</span><br><span class="line">        <span class="built_in">console</span>.log(moment(<span class="string">&#x27;2010-10-20&#x27;</span>).isSame(<span class="string">&#x27;2010-12-20&#x27;</span>, <span class="string">&#x27;year&#x27;</span>));</span><br><span class="line">        <span class="comment">//isAfter() 检查一个时间是否在另一个时间之后</span></span><br><span class="line">        <span class="built_in">console</span>.log(moment(<span class="string">&#x27;2010-10-20&#x27;</span>).isAfter(<span class="string">&#x27;2010-09-19&#x27;</span>)); <span class="comment">//true</span></span><br><span class="line">        <span class="comment">//isSameOrBefore()  检查一个时间是否在另一个时间之前或者与之相同（&lt;=）</span></span><br><span class="line">        <span class="built_in">console</span>.log(</span><br><span class="line">            moment(<span class="string">&#x27;2010-10-20&#x27;</span>).isSameOrBefore(<span class="string">&#x27;2010-10-21&#x27;</span>), <span class="comment">//true</span></span><br><span class="line">            moment(<span class="string">&#x27;2010-10-20&#x27;</span>).isSameOrBefore(<span class="string">&#x27;2010-10-20&#x27;</span>), <span class="comment">//true</span></span><br><span class="line">            moment(<span class="string">&#x27;2010-11-20&#x27;</span>).isSameOrBefore(<span class="string">&#x27;2010-10-20&#x27;</span>), <span class="comment">//false</span></span><br><span class="line">        );</span><br><span class="line">        <span class="comment">//isSameOrAfter() 检查一个时间是否在另一个时间之后或者与之相同（&gt;=）</span></span><br><span class="line">        <span class="built_in">console</span>.log(</span><br><span class="line">            moment(<span class="string">&#x27;2010-11-20&#x27;</span>).isSameOrAfter(<span class="string">&#x27;2010-10-21&#x27;</span>), <span class="comment">//true</span></span><br><span class="line">            moment(<span class="string">&#x27;2010-10-20&#x27;</span>).isSameOrAfter(<span class="string">&#x27;2010-10-20&#x27;</span>), <span class="comment">//true</span></span><br><span class="line">            moment(<span class="string">&#x27;2010-10-19&#x27;</span>).isSameOrAfter(<span class="string">&#x27;2010-10-20&#x27;</span>), <span class="comment">//false</span></span><br><span class="line">        );</span><br><span class="line">        <span class="comment">//isBetween()   检查一个时间是否在其他两个时间之间</span></span><br><span class="line">        <span class="built_in">console</span>.log(</span><br><span class="line">            moment(<span class="string">&#x27;2010-10-20&#x27;</span>).isBetween(<span class="string">&#x27;2010-10-19&#x27;</span>, <span class="string">&#x27;2010-10-25&#x27;</span>), <span class="comment">//true</span></span><br><span class="line">            moment(<span class="string">&#x27;2010-10-20&#x27;</span>).isBetween(<span class="string">&#x27;2010-10-19&#x27;</span>, <span class="literal">undefined</span>), <span class="comment">//true undefined等于moment(),就是当前的时间</span></span><br><span class="line">            moment(<span class="string">&#x27;2010-10-20&#x27;</span>).isBetween(<span class="string">&#x27;2009-10-19&#x27;</span>, <span class="string">&#x27;2012-01-01&#x27;</span>, <span class="string">&#x27;year&#x27;</span>), <span class="comment">//true</span></span><br><span class="line">            <span class="comment">//第四个参数为包容性，第三个参数为null，表示对比单位为默认毫秒数</span></span><br><span class="line">            moment(<span class="string">&#x27;2016-10-30&#x27;</span>).isBetween(<span class="string">&#x27;2016-10-30&#x27;</span>, <span class="string">&#x27;2016-12-30&#x27;</span>, <span class="literal">null</span>, <span class="string">&#x27;(]&#x27;</span>), <span class="comment">//false</span></span><br><span class="line">        );</span><br><span class="line">        <span class="comment">//isLeapYear()  检测是否为闰年</span></span><br><span class="line">        <span class="built_in">console</span>.log(</span><br><span class="line">            moment().isLeapYear(), <span class="comment">//true</span></span><br><span class="line">            moment([<span class="number">2019</span>]).isLeapYear(), <span class="comment">//false</span></span><br><span class="line">        );</span><br><span class="line">        <span class="comment">//isMoment() 检测变量是否为moment对象</span></span><br><span class="line">        <span class="built_in">console</span>.log(</span><br><span class="line">            moment.isMoment(), <span class="comment">//false</span></span><br><span class="line">            moment.isMoment(<span class="keyword">new</span> <span class="built_in">Date</span>()), <span class="comment">//false</span></span><br><span class="line">            moment.isMoment(moment()), <span class="comment">//true</span></span><br><span class="line">        );</span><br><span class="line">        <span class="comment">//isDate()  检测变量是否为原生的Date对象</span></span><br><span class="line">        <span class="built_in">console</span>.log(</span><br><span class="line">            moment.isDate(), <span class="comment">//false</span></span><br><span class="line">            moment.isDate(<span class="keyword">new</span> <span class="built_in">Date</span>()), <span class="comment">//true</span></span><br><span class="line">            moment.isDate(moment()), <span class="comment">//false</span></span><br><span class="line">        );</span><br></pre></td></tr></table></figure>
+
+<h2 id="国际化、自定义方法"><a href="#国际化、自定义方法" class="headerlink" title="国际化、自定义方法"></a>国际化、自定义方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br></pre></td><td class="code"><pre><span class="line">       <span class="comment">//设置语言环境 (全局) </span></span><br><span class="line">        <span class="comment">//moment.locale(&#x27;zh-cn&#x27;);</span></span><br><span class="line">        <span class="built_in">console</span>.log(moment.locale()); <span class="comment">//en //返回当前的语言环境</span></span><br><span class="line">        <span class="built_in">console</span>.log(</span><br><span class="line">            moment().weekday(<span class="number">0</span>), <span class="comment">//根据语言环境获取或设置（传参）星期几。英文环境为星期天，中文环境为星期一</span></span><br><span class="line">            moment().format(<span class="string">&#x27;LLLL&#x27;</span>), <span class="comment">//格式化时间，参数为本地化格式。英文环境与中文环境都不同</span></span><br><span class="line">            moment().month(),</span><br><span class="line">        );</span><br><span class="line">        <span class="comment">//设置语言环境 (局部) </span></span><br><span class="line">        <span class="keyword">var</span> myMoment = moment();</span><br><span class="line">        myMoment.locale(<span class="string">&#x27;ar-dz&#x27;</span>);</span><br><span class="line">        <span class="built_in">console</span>.log(moment().format(<span class="string">&#x27;LLLL&#x27;</span>));</span><br><span class="line">        <span class="built_in">console</span>.log(myMoment.format(<span class="string">&#x27;LLLL&#x27;</span>));</span><br><span class="line">        <span class="comment">//months()/weekdays() </span></span><br><span class="line">        <span class="comment">/* moment.locale(&#x27;ru&#x27;);</span></span><br><span class="line"><span class="comment">        moment.locale(&#x27;zh-hk&#x27;); */</span></span><br><span class="line">        <span class="built_in">console</span>.log(</span><br><span class="line">            moment.months(),</span><br><span class="line">            moment.monthsShort(),</span><br><span class="line">            moment.weekdays(),</span><br><span class="line">            moment.weekdaysShort(),</span><br><span class="line">            moment.weekdaysMin(),</span><br><span class="line">        );</span><br><span class="line">        <span class="comment">//localeData()</span></span><br><span class="line">        <span class="built_in">console</span>.log(</span><br><span class="line">            moment.localeData(),</span><br><span class="line">            moment.localeData().monthsShort(),</span><br><span class="line">        );</span><br><span class="line">        <span class="comment">//自定义</span></span><br><span class="line">        moment.updateLocale(<span class="string">&#x27;zh-cn&#x27;</span>, &#123;</span><br><span class="line">            <span class="comment">//设置月份名称</span></span><br><span class="line">            <span class="attr">months</span>: <span class="string">&#x27;一月_二月_三月_四月_五月_六月_七月_八月_九月_十月_十一月_十二月&#x27;</span>.split(<span class="string">&#x27;_&#x27;</span>),</span><br><span class="line">            <span class="comment">//设置月分名称的缩写</span></span><br><span class="line">            <span class="attr">monthsShort</span>: <span class="string">&#x27;1月_2月_3月_4月_5月_6月_7月_8月_9月_10月_11月_12月&#x27;</span>.split(<span class="string">&#x27;_&#x27;</span>),</span><br><span class="line">            <span class="comment">//设置星期名称</span></span><br><span class="line">            <span class="attr">weekdays</span>: <span class="string">&#x27;星期日_星期一_星期二_星期三_星期四_星期五_星期六&#x27;</span>.split(<span class="string">&#x27;_&#x27;</span>),</span><br><span class="line">            <span class="comment">//设置星期名称的缩写</span></span><br><span class="line">            <span class="attr">weekdaysShort</span>: <span class="string">&#x27;周日_周一_周二_周三_周四_周五_周六&#x27;</span>.split(<span class="string">&#x27;_&#x27;</span>),</span><br><span class="line">            <span class="comment">//设置星期名称的最小缩写</span></span><br><span class="line">            <span class="attr">weekdaysMin</span>: <span class="string">&#x27;日_一_二_三_四_五_六&#x27;</span>.split(<span class="string">&#x27;_&#x27;</span>),</span><br><span class="line">            <span class="comment">//设置长日期格式，是个对象</span></span><br><span class="line">            <span class="attr">longDateFormat</span>: &#123;</span><br><span class="line">                <span class="attr">LT</span>: <span class="string">&#x27;Ah点mm分&#x27;</span>,</span><br><span class="line">                <span class="attr">LTS</span>: <span class="string">&#x27;Ah点m分s秒&#x27;</span>,</span><br><span class="line">                <span class="attr">L</span>: <span class="string">&#x27;YYYY-MM-DD&#x27;</span>,</span><br><span class="line">                <span class="attr">LL</span>: <span class="string">&#x27;YYYY年MMMD日&#x27;</span>,</span><br><span class="line">                <span class="attr">LLL</span>: <span class="string">&#x27;YYYY年MMMD日Ah点mm分&#x27;</span>,</span><br><span class="line">                <span class="attr">LLLL</span>: <span class="string">&#x27;YYYY年MMMD日ddddAh点mm分&#x27;</span>,</span><br><span class="line">                <span class="attr">l</span>: <span class="string">&#x27;YYYY-MM-DD&#x27;</span>,</span><br><span class="line">                <span class="attr">ll</span>: <span class="string">&#x27;YYYY年MMMD日&#x27;</span>,</span><br><span class="line">                <span class="attr">lll</span>: <span class="string">&#x27;YYYY年MMMD日Ah点mm分&#x27;</span>,</span><br><span class="line">                <span class="attr">llll</span>: <span class="string">&#x27;YYYY年MMMD日ddddAh点mm分&#x27;</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="comment">//设置相对时间，from()与to()的方法返回的值就是从这里取的</span></span><br><span class="line">            <span class="attr">relativeTime</span>: &#123;</span><br><span class="line">                <span class="attr">future</span>: <span class="string">&#x27;%s内&#x27;</span>,</span><br><span class="line">                <span class="attr">past</span>: <span class="string">&#x27;%s前&#x27;</span>,</span><br><span class="line">                <span class="attr">s</span>: <span class="string">&#x27;几秒&#x27;</span>,</span><br><span class="line">                <span class="attr">m</span>: <span class="string">&#x27;1 分钟&#x27;</span>,</span><br><span class="line">                <span class="attr">mm</span>: <span class="string">&#x27;%d 分钟&#x27;</span>,</span><br><span class="line">                <span class="attr">h</span>: <span class="string">&#x27;1 小时&#x27;</span>,</span><br><span class="line">                <span class="attr">hh</span>: <span class="string">&#x27;%d 小时&#x27;</span>,</span><br><span class="line">                <span class="attr">d</span>: <span class="string">&#x27;1 天&#x27;</span>,</span><br><span class="line">                <span class="attr">dd</span>: <span class="string">&#x27;%d 天&#x27;</span>,</span><br><span class="line">                <span class="attr">M</span>: <span class="string">&#x27;1 个月&#x27;</span>,</span><br><span class="line">                <span class="attr">MM</span>: <span class="string">&#x27;%d 个月&#x27;</span>,</span><br><span class="line">                <span class="attr">y</span>: <span class="string">&#x27;1 年&#x27;</span>,</span><br><span class="line">                <span class="attr">yy</span>: <span class="string">&#x27;%d 年&#x27;</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="comment">//设置时间段，参数：小时,分钟,大小写</span></span><br><span class="line">            <span class="attr">meridiem</span>: <span class="function"><span class="keyword">function</span>(<span class="params">hour, minute, isLower</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">const</span> hm = hour * <span class="number">100</span> + minute;</span><br><span class="line">                <span class="keyword">if</span> (hm &lt; <span class="number">600</span>) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="string">&#x27;凌晨&#x27;</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (hm &lt; <span class="number">900</span>) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="string">&#x27;早上&#x27;</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (hm &lt; <span class="number">1130</span>) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="string">&#x27;上午&#x27;</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (hm &lt; <span class="number">1230</span>) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="string">&#x27;中午&#x27;</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (hm &lt; <span class="number">1800</span>) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="string">&#x27;下午&#x27;</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="string">&#x27;晚上&#x27;</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="comment">//设置日历</span></span><br><span class="line">            <span class="attr">calendar</span>: &#123;</span><br><span class="line">                <span class="attr">sameDay</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="built_in">this</span>.minutes() === <span class="number">0</span> ? <span class="string">&#x27;[今天]Ah[点整]&#x27;</span> : <span class="string">&#x27;[今天]LT&#x27;</span>;</span><br><span class="line">                &#125;,</span><br><span class="line">                <span class="attr">nextDay</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="built_in">this</span>.minutes() === <span class="number">0</span> ? <span class="string">&#x27;[明天]Ah[点整]&#x27;</span> : <span class="string">&#x27;[明天]LT&#x27;</span>;</span><br><span class="line">                &#125;,</span><br><span class="line">                <span class="attr">lastDay</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="built_in">this</span>.minutes() === <span class="number">0</span> ? <span class="string">&#x27;[昨天]Ah[点整]&#x27;</span> : <span class="string">&#x27;[昨天]LT&#x27;</span>;</span><br><span class="line">                &#125;,</span><br><span class="line">                <span class="attr">nextWeek</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">let</span> startOfWeek, prefix;</span><br><span class="line">                    startOfWeek = moment().startOf(<span class="string">&#x27;week&#x27;</span>);</span><br><span class="line">                    prefix = <span class="built_in">this</span>.diff(startOfWeek, <span class="string">&#x27;days&#x27;</span>) &gt;= <span class="number">7</span> ? <span class="string">&#x27;[下]&#x27;</span> : <span class="string">&#x27;[本####]&#x27;</span>;</span><br><span class="line">                    <span class="keyword">return</span> <span class="built_in">this</span>.minutes() === <span class="number">0</span> ? prefix + <span class="string">&#x27;dddAh点整&#x27;</span> : prefix + <span class="string">&#x27;dddAh点mm&#x27;</span>;</span><br><span class="line">                &#125;,</span><br><span class="line">                <span class="attr">lastWeek</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">let</span> startOfWeek, prefix;</span><br><span class="line">                    startOfWeek = moment().startOf(<span class="string">&#x27;week&#x27;</span>);</span><br><span class="line">                    prefix = <span class="built_in">this</span>.unix() &lt; startOfWeek.unix() ? <span class="string">&#x27;[上]&#x27;</span> : <span class="string">&#x27;[本]&#x27;</span>;</span><br><span class="line">                    <span class="keyword">return</span> <span class="built_in">this</span>.minutes() === <span class="number">0</span> ? prefix + <span class="string">&#x27;dddAh点整&#x27;</span> : prefix + <span class="string">&#x27;dddAh点mm&#x27;</span>;</span><br><span class="line">                &#125;,</span><br><span class="line">                <span class="attr">sameElse</span>: <span class="string">&#x27;LL&#x27;</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">week</span>: &#123;</span><br><span class="line">                <span class="attr">dow</span>: <span class="number">1</span>, <span class="comment">//星期的第一天是周1</span></span><br><span class="line">                <span class="attr">doy</span>: <span class="number">4</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;今天是：&#x27;</span> + moment().format(<span class="string">&#x27;MMMM&#x27;</span>) + <span class="string">&#x27; &#x27;</span> + moment().format(<span class="string">&#x27;dddd&#x27;</span>));</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;今天是：&#x27;</span> + moment().format(<span class="string">&#x27;MMM&#x27;</span>) + <span class="string">&#x27; &#x27;</span> + moment().format(<span class="string">&#x27;ddd&#x27;</span>));</span><br><span class="line">        <span class="built_in">console</span>.log(moment().format(<span class="string">&#x27;LLLL&#x27;</span>));</span><br><span class="line">        <span class="built_in">console</span>.log(moment([<span class="number">2008</span>]).from());</span><br><span class="line">        <span class="built_in">console</span>.log(moment().calendar(moment([<span class="number">2020</span>, <span class="number">3</span>, <span class="number">15</span>])));</span><br></pre></td></tr></table></figure>
+
+<h2 id="时长方法"><a href="#时长方法" class="headerlink" title="时长方法"></a>时长方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line">        <span class="comment">//时长</span></span><br><span class="line">        <span class="built_in">console</span>.log(moment.duration());</span><br><span class="line">        <span class="built_in">console</span>.log(</span><br><span class="line">            moment.duration(<span class="number">100</span>), <span class="comment">//给一个参数表示为毫秒</span></span><br><span class="line">            moment.duration(<span class="number">2</span>, <span class="string">&#x27;seconds&#x27;</span>), <span class="comment">//时长为2s</span></span><br><span class="line">            moment.duration(<span class="number">3</span>, <span class="string">&#x27;minutes&#x27;</span>), <span class="comment">//时长为3min</span></span><br><span class="line">            moment.duration(<span class="number">1</span>, <span class="string">&#x27;M&#x27;</span>),</span><br><span class="line">            <span class="comment">//参数也可以是一个对象</span></span><br><span class="line">            moment.duration(&#123;</span><br><span class="line">                <span class="attr">seconds</span>: <span class="number">1</span>,</span><br><span class="line">                <span class="attr">minutes</span>: <span class="number">2</span>,</span><br><span class="line">                <span class="attr">hours</span>: <span class="number">3</span>,</span><br><span class="line">                <span class="attr">days</span>: <span class="number">4</span>,</span><br><span class="line">                <span class="attr">weeks</span>: <span class="number">5</span>,</span><br><span class="line">                <span class="attr">months</span>: <span class="number">6</span>,</span><br><span class="line">                <span class="attr">years</span>: <span class="number">7</span></span><br><span class="line">            &#125;),</span><br><span class="line">            <span class="comment">//ASP.NET 风格的时间跨度</span></span><br><span class="line">            moment.duration(<span class="string">&#x27;23:59:59&#x27;</span>), <span class="comment">//时:分:秒</span></span><br><span class="line">        );</span><br><span class="line">        <span class="comment">//clone() 克隆一个时长对象</span></span><br><span class="line">        <span class="keyword">var</span> d1 = moment.duration();</span><br><span class="line">        <span class="keyword">var</span> d2 = d1.clone();</span><br><span class="line">        d1.add(<span class="number">1</span>, <span class="string">&#x27;second&#x27;</span>);</span><br><span class="line">        <span class="built_in">console</span>.log(d1, d2);</span><br><span class="line">        moment.locale(<span class="string">&#x27;zh-cn&#x27;</span>);</span><br><span class="line">        <span class="comment">//humanize()    显示一段时长</span></span><br><span class="line">        <span class="built_in">console</span>.log(</span><br><span class="line">            moment.duration(<span class="number">1</span>, <span class="string">&#x27;minutes&#x27;</span>).humanize(),</span><br><span class="line">            moment.duration(<span class="number">24</span>, <span class="string">&#x27;hours&#x27;</span>).humanize(),</span><br><span class="line">            moment.duration(<span class="number">1</span>, <span class="string">&#x27;minutes&#x27;</span>).humanize(<span class="literal">true</span>), <span class="comment">//1 分钟内</span></span><br><span class="line">            moment.duration(-<span class="number">1</span>, <span class="string">&#x27;minutes&#x27;</span>).humanize(<span class="literal">true</span>), <span class="comment">//1 分钟前</span></span><br><span class="line">        );</span><br><span class="line">        <span class="comment">//milliseconds()    此方法会计算溢出</span></span><br><span class="line">        <span class="comment">//asMilliseconds()</span></span><br><span class="line">        <span class="built_in">console</span>.log(</span><br><span class="line">            moment.duration(<span class="number">500</span>).milliseconds(), <span class="comment">//500</span></span><br><span class="line">            moment.duration(<span class="number">1500</span>).milliseconds(), <span class="comment">//500</span></span><br><span class="line">            moment.duration(<span class="number">15000</span>).milliseconds(), <span class="comment">//0</span></span><br><span class="line">            <span class="comment">//moment.duration(1500)</span></span><br><span class="line">            moment.duration(<span class="number">500</span>).asMilliseconds(), <span class="comment">//500</span></span><br><span class="line">            moment.duration(<span class="number">1500</span>).asMilliseconds(), <span class="comment">//1500</span></span><br><span class="line">            moment.duration(<span class="number">15000</span>).asMilliseconds(), <span class="comment">//15000</span></span><br><span class="line">        );</span><br><span class="line">        <span class="comment">//seconds()</span></span><br><span class="line">        <span class="comment">//asSeconds()</span></span><br><span class="line">        <span class="built_in">console</span>.log(</span><br><span class="line">            moment.duration(<span class="number">500</span>).seconds(), <span class="comment">//0</span></span><br><span class="line">            moment.duration(<span class="number">1500</span>).seconds(), <span class="comment">//1</span></span><br><span class="line">            moment.duration(<span class="number">15000</span>).seconds(), <span class="comment">//15</span></span><br><span class="line">            moment.duration(<span class="number">500</span>).asSeconds(), <span class="comment">//0.5</span></span><br><span class="line">            moment.duration(<span class="number">1500</span>).asSeconds(), <span class="comment">//1.5</span></span><br><span class="line">            moment.duration(<span class="number">15000</span>).asSeconds(), <span class="comment">//15</span></span><br><span class="line">        );</span><br><span class="line">        <span class="comment">//add() 增加时长，这个方法可以添加多种类型的参数</span></span><br><span class="line">        <span class="keyword">var</span> a = moment.duration(<span class="number">1</span>, <span class="string">&#x27;d&#x27;</span>); <span class="comment">//时长为1天</span></span><br><span class="line">        <span class="keyword">var</span> b = moment.duration(<span class="number">2</span>, <span class="string">&#x27;d&#x27;</span>); <span class="comment">//时长为2天</span></span><br><span class="line">        <span class="built_in">console</span>.log(</span><br><span class="line">            a.add(b).days(),</span><br><span class="line">            moment.duration().add(<span class="number">1</span>, <span class="string">&#x27;d&#x27;</span>).days() <span class="comment">// 1</span></span><br><span class="line">        );</span><br><span class="line">        <span class="comment">//subtract()    减少时长</span></span><br><span class="line">        <span class="keyword">var</span> a = moment.duration(<span class="number">3</span>, <span class="string">&#x27;d&#x27;</span>);</span><br><span class="line">        <span class="keyword">var</span> b = moment.duration(<span class="number">2</span>, <span class="string">&#x27;d&#x27;</span>);</span><br><span class="line">        <span class="built_in">console</span>.log(</span><br><span class="line">            a.subtract(b).days(), <span class="comment">//1</span></span><br><span class="line">            moment.duration(<span class="number">5</span>, <span class="string">&#x27;d&#x27;</span>).subtract(<span class="number">1</span>, <span class="string">&#x27;d&#x27;</span>).days() <span class="comment">//4</span></span><br><span class="line">        );</span><br><span class="line">        <span class="comment">//duration(x.diff(y))   获取两个时长的差值</span></span><br><span class="line">        <span class="keyword">var</span> a = moment([<span class="number">2018</span>, <span class="number">10</span>, <span class="number">21</span>, <span class="number">10</span>, <span class="number">05</span>]);</span><br><span class="line">        <span class="keyword">var</span> b = moment([<span class="number">2018</span>, <span class="number">10</span>, <span class="number">21</span>, <span class="number">10</span>, <span class="number">06</span>]);</span><br><span class="line">        <span class="built_in">console</span>.log(</span><br><span class="line">            moment.duration(b.diff(a)),</span><br><span class="line">        );</span><br><span class="line">        <span class="comment">//as()</span></span><br><span class="line">        <span class="built_in">console</span>.log(</span><br><span class="line">            moment.duration(<span class="number">1000</span>).as(<span class="string">&#x27;milliseconds&#x27;</span>), <span class="comment">//1000</span></span><br><span class="line">            moment.duration(<span class="number">1000</span>).as(<span class="string">&#x27;seconds&#x27;</span>), <span class="comment">//1</span></span><br><span class="line">        )</span><br><span class="line">        <span class="comment">//get()</span></span><br><span class="line">        <span class="keyword">var</span> d = moment.duration(&#123;</span><br><span class="line">            <span class="attr">seconds</span>: <span class="number">1</span>,</span><br><span class="line">            <span class="attr">minutes</span>: <span class="number">2</span>,</span><br><span class="line">            <span class="attr">hours</span>: <span class="number">3</span>,</span><br><span class="line">            <span class="attr">days</span>: <span class="number">4</span>,</span><br><span class="line">            <span class="attr">months</span>: <span class="number">5</span>,</span><br><span class="line">            <span class="attr">years</span>: <span class="number">6</span></span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="built_in">console</span>.log(d);</span><br><span class="line">        <span class="built_in">console</span>.log(</span><br><span class="line">            d.get(<span class="string">&#x27;seconds&#x27;</span>),</span><br><span class="line">            d.get(<span class="string">&#x27;minutes&#x27;</span>),</span><br><span class="line">            d.get(<span class="string">&#x27;hours&#x27;</span>),</span><br><span class="line">            d.get(<span class="string">&#x27;days&#x27;</span>),</span><br><span class="line">            d.get(<span class="string">&#x27;months&#x27;</span>),</span><br><span class="line">            d.get(<span class="string">&#x27;years&#x27;</span>),</span><br><span class="line">        )</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag"><i class="fa fa-tag"></i> 前端</a>
+              <a href="/tags/moment/" rel="tag"><i class="fa fa-tag"></i> moment</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/01/20/js%E5%B7%A5%E5%85%B7%E5%BA%93-%E6%9C%AC%E5%9C%B0%E5%8C%96%E5%AD%98%E5%82%A8/" rel="prev" title="浏览器本地存储">
+                  <i class="fa fa-chevron-left"></i> 浏览器本地存储
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/01/20/js%E5%B7%A5%E5%85%B7%E5%BA%93-mock%E7%9A%84%E5%9F%BA%E7%A1%80%E4%BB%8B%E7%BB%8D/" rel="next" title="mock的基本语法">
+                  mock的基本语法 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="SOHUCS"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">筱</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">354k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">5:21</span>
+  </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"cyvRTHn0F","appkey":"fab0cc5e8cd73bb0d04a2cc210c5f92f"}</script>
+<script src="/js/third-party/comments/changyan.js"></script>
+
+</body>
+</html>
