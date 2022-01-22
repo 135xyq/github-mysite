@@ -6,14 +6,14 @@
 title: 筱
 subtitle: ''
 description: '筱的博客'
-keywords:
+keywords: '筱的个人空间'
 author: 筱
 language: zh-CN
 timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-# url: https://135xyq.github.io/135xyq.github.io
+url: https://135xyq.github.io/135xyq.github.io
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -105,3 +105,18 @@ deploy:
   type: git
   repository: git@github.com:135xyq/135xyq.github.io.git
   branch: master
+
+search:
+  path: search.xml
+  field: post
+  content: true
+  format: html
+
+plugins: 
+  hexo-generator-baidu-sitemap
+  hexo-generator-sitemap
+
+baidusitemap:
+    path: baidusitemap.xml
+sitemap:
+    path: sitemap.xml
