@@ -28,16 +28,16 @@
 <meta property="og:site_name" content="筱">
 <meta property="og:description" content="vue2中的路由">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://mdrs.yuanjin.tech/img/20201202170037.png">
-<meta property="og:image" content="http://mdrs.yuanjin.tech/img/20201203150453.png">
-<meta property="og:image" content="http://mdrs.yuanjin.tech/img/20201203150918.png">
+<meta property="og:image" content="https://135xyq.github.io/images/vue2/%E8%B7%AF%E7%94%B1-1.jpg">
+<meta property="og:image" content="https://135xyq.github.io/images/vue2/%E8%B7%AF%E7%94%B1-3.jpg">
+<meta property="og:image" content="https://135xyq.github.io/images/vue2/%E8%B7%AF%E7%94%B1-2.jpg">
 <meta property="article:published_time" content="2022-01-01T06:02:47.000Z">
-<meta property="article:modified_time" content="2022-01-01T06:27:06.596Z">
+<meta property="article:modified_time" content="2022-01-24T01:45:33.011Z">
 <meta property="article:author" content="筱">
 <meta property="article:tag" content="vue2">
 <meta property="article:tag" content="前端">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://mdrs.yuanjin.tech/img/20201202170037.png">
+<meta name="twitter:image" content="https://135xyq.github.io/images/vue2/%E8%B7%AF%E7%94%B1-1.jpg">
 
 
 <link rel="canonical" href="https://135xyq.github.io/135xyq.github.io/2022/01/01/%E8%B7%AF%E7%94%B1/">
@@ -98,7 +98,7 @@
         <li class="menu-item menu-item-about"><a href="/135xyq.github.io/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
         <li class="menu-item menu-item-tags"><a href="/135xyq.github.io/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">34</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/135xyq.github.io/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">23</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/135xyq.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">115</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/135xyq.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">116</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -170,7 +170,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/135xyq.github.io/archives/">
-          <span class="site-state-item-count">115</span>
+          <span class="site-state-item-count">116</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -266,9 +266,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2022-01-01 14:02:47 / 修改时间：14:27:06" itemprop="dateCreated datePublished" datetime="2022-01-01T14:02:47+08:00">2022-01-01</time>
+      <time title="创建时间：2022-01-01 14:02:47" itemprop="dateCreated datePublished" datetime="2022-01-01T14:02:47+08:00">2022-01-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-01-24 09:45:33" itemprop="dateModified" datetime="2022-01-24T09:45:33+08:00">2022-01-24</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -327,8 +333,7 @@
     
     <div class="post-body" itemprop="articleBody">
         <p>vue-router官网：<a target="_blank" rel="noopener" href="https://router.vuejs.org/zh/">https://router.vuejs.org/zh/</a></p>
-<img src="http://mdrs.yuanjin.tech/img/20201202170037.png" alt="image-20201202170037391" style="zoom:50%;" />
-
+<p><img src="/images/vue2/%E8%B7%AF%E7%94%B1-1.jpg" alt="路由1"></p>
 <ol>
 <li><p><strong>如何根据地址中的路径选择不同的组件？</strong></p>
 </li>
@@ -367,10 +372,9 @@
 <h1 id="导航"><a href="#导航" class="headerlink" title="导航"></a>导航</h1><p><code>vue-router</code>提供了全局的组件<code>RouterLink</code>，它的渲染结果是一个<code>a</code>元素</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">RouterLink</span> <span class="attr">to</span>=<span class="string">&quot;/blog&quot;</span>&gt;</span>文章<span class="tag">&lt;/<span class="name">RouterLink</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- mode:hash 生成 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#/blog&quot;</span>&gt;</span>文章<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- mode:history 生成 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 为了避免刷新页面，vue-router实际上为它添加了点击事件，并阻止了默认行为，在事件内部使用hitory api更改路径 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/blog&quot;</span>&gt;</span>文章<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<img src="http://mdrs.yuanjin.tech/img/20201203150453.png" alt="image-20201203150453332" />
 
-<img src="http://mdrs.yuanjin.tech/img/20201203150918.png" alt="image-20201203150918219" style="zoom:50%;" />
-
+<p><img src="/images/vue2/%E8%B7%AF%E7%94%B1-3.jpg" alt="路由3"></p>
+<p><img src="/images/vue2/%E8%B7%AF%E7%94%B1-2.jpg" alt="路由2"></p>
 <h2 id="激活状态"><a href="#激活状态" class="headerlink" title="激活状态"></a>激活状态</h2><p>默认情况下，<code>vue-router</code>会用 <strong>当前路径</strong> 匹配 <strong>导航路径</strong> ：</p>
 <ul>
 <li>如果当前路径是以导航路径开头，则算作匹配，会为导航的a元素添加类名<code>router-link-active</code></li>
@@ -601,7 +605,7 @@
 <script src="/135xyq.github.io/js/third-party/math/mathjax.js"></script>
 
 
-<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"cyvRTHn0F","appkey":"fab0cc5e8cd73bb0d04a2cc210c5f92f"}</script>
+<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"cyvS6KuDV","appkey":"48e71f62cb3f29222e2ee2c1f7abcc74"}</script>
 <script src="/135xyq.github.io/js/third-party/comments/changyan.js"></script>
 
 </body>

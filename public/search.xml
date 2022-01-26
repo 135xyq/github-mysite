@@ -5336,8 +5336,7 @@ load,整个页面加载完才能触发    </li>
 
 
 
-<h1 id="扩展vue实例"><a href="#扩展vue实例" class="headerlink" title="扩展vue实例"></a>扩展vue实例</h1><img src="http://mdrs.yuanjin.tech/img/20201203172154.jpg" alt="扩展vue实例" style="zoom:33%;" />
-
+<h1 id="扩展vue实例"><a href="#扩展vue实例" class="headerlink" title="扩展vue实例"></a>扩展vue实例</h1><p><img src="/images/vue2/%E5%BC%B9%E5%87%BA%E6%B6%88%E6%81%AF-1.jpg" alt="弹出消息"></p>
 <h1 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h1><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">ref</span>=<span class="string">&quot;para&quot;</span>&gt;</span>some paragraph<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ChildComp</span> <span class="attr">ref</span>=<span class="string">&quot;comp&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;handleClick&quot;</span>&gt;</span>查看所有引用<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">  <span class="keyword">import</span> ChildComp <span class="keyword">from</span> <span class="string">&quot;./ChildComp&quot;</span></span></span><br><span class="line"><span class="javascript">	<span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="javascript">    <span class="attr">components</span>:&#123;</span></span><br><span class="line"><span class="javascript">      ChildComp</span></span><br><span class="line"><span class="javascript">    &#125;,</span></span><br><span class="line"><span class="javascript">    <span class="attr">methods</span>:&#123;</span></span><br><span class="line"><span class="javascript">      <span class="function"><span class="title">handleClick</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="comment">// 获取持有的所有引用</span></span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(<span class="built_in">this</span>.$refs);</span></span><br><span class="line"><span class="javascript">        <span class="comment">/*</span></span></span><br><span class="line"><span class="comment"><span class="javascript">        &#123;</span></span></span><br><span class="line"><span class="comment"><span class="javascript">        	para: p元素（原生DOM）,</span></span></span><br><span class="line"><span class="comment"><span class="javascript">        	comp: ChildComp的组件实例</span></span></span><br><span class="line"><span class="comment"><span class="javascript">        &#125;</span></span></span><br><span class="line"><span class="comment"><span class="javascript">        */</span></span></span><br><span class="line"><span class="javascript">      &#125;</span></span><br><span class="line"><span class="javascript">    &#125;</span></span><br><span class="line"><span class="javascript">  &#125;</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 
@@ -5407,8 +5406,7 @@ load,整个页面加载完才能触发    </li>
 <li>运行时就不再需要编译模板了，提高了运行效率</li>
 <li>打包结果中不再需要vue的编译代码，减少了打包体积</li>
 </ol>
-<img src="http://mdrs.yuanjin.tech/img/20201111155613.png" alt="image-20201111155613940" style="zoom:50%;" />
-
+<p><img src="/images/vue2/vue2%E6%90%AD%E5%BB%BA%E5%B7%A5%E7%A8%8B-SFC.jpg"></p>
 ]]></content>
       <categories>
         <category>前端学习笔记</category>
@@ -5925,8 +5923,7 @@ load,整个页面加载完才能触发    </li>
 </ul>
 <h3 id="注册组件"><a href="#注册组件" class="headerlink" title="注册组件"></a>注册组件</h3><p>注册组件分为两种方式，一种是<strong>全局注册</strong>，一种是<strong>局部注册</strong></p>
 <h4 id="全局注册"><a href="#全局注册" class="headerlink" title="全局注册"></a>全局注册</h4><p>一旦全局注册了一个组件，整个应用中任何地方都可以使用该组件</p>
-<img src="http://mdrs.yuanjin.tech/img/2020-02-18-10-24-44.png" style="zoom:50%;" />
-
+<p><img src="/imzges/vue2/vue2%E7%BB%84%E4%BB%B6-%E7%BB%84%E4%BB%B6%E6%B3%A8%E5%86%8C.jpg"></p>
 <p>全局注册的方式是：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 参数1：组件名称，将来在模板中使用组件时，会使用该名称</span></span><br><span class="line"><span class="comment">// 参数2：组件配置对象</span></span><br><span class="line"><span class="comment">// 该代码运行后，即可在模板中使用组件</span></span><br><span class="line">Vue.component(<span class="string">&#x27;my-comp&#x27;</span>, myComp)</span><br></pre></td></tr></table></figure>
 
@@ -5938,8 +5935,7 @@ load,整个页面加载完才能触发    </li>
 <p>但在一些工程化的大型项目中，很多组件都不需要全局使用。<br>比如一个登录组件，只有在登录的相关页面中使用，如果全局注册，将导致构建工具无法优化打包<br><strong>因此，除非组件特别通用，否则不建议使用全局注册</strong></p>
 </blockquote>
 <h4 id="局部注册"><a href="#局部注册" class="headerlink" title="局部注册"></a>局部注册</h4><p>局部注册就是哪里要用到组件，就在哪里注册</p>
-<img src="http://mdrs.yuanjin.tech/img/2020-02-18-10-28-45.png" style="zoom:50%;" />
-
+<p><img src="/images/vue2/vue2%E7%BB%84%E4%BB%B6-%E5%B1%80%E9%83%A8%E6%B3%A8%E5%86%8C.jpg"></p>
 <p>局部注册的方式是，在要使用组件的组件或实例中加入一个配置：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 这是另一个要使用my-comp的组件</span></span><br><span class="line"><span class="keyword">var</span> otherComp = &#123;</span><br><span class="line">  <span class="attr">components</span>:&#123;</span><br><span class="line">    <span class="comment">// 属性名为组件名称，模板中将使用该名称</span></span><br><span class="line">    <span class="comment">// 属性值为组件配置对象</span></span><br><span class="line">    <span class="string">&quot;my-comp&quot;</span>: myComp</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">template</span>: <span class="string">`</span></span><br><span class="line"><span class="string">    &lt;div&gt;</span></span><br><span class="line"><span class="string">      &lt;!-- 该组件的其他内容 --&gt;</span></span><br><span class="line"><span class="string">      &lt;my-comp&gt;&lt;/my-comp&gt;</span></span><br><span class="line"><span class="string">    &lt;/div&gt;</span></span><br><span class="line"><span class="string">  `</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -5976,8 +5972,7 @@ load,整个页面加载完才能触发    </li>
 
 <h2 id="组件树"><a href="#组件树" class="headerlink" title="组件树"></a>组件树</h2><p>一个组件创建好后，往往会在各种地方使用它。它可能多次出现在vue实例中，也可能出现在其他组件中。</p>
 <p>于是就形成了一个组件树</p>
-<img src="http://mdrs.yuanjin.tech/img/2020-02-18-11-00-58.png" style="zoom:50%;" />
-
+<p><img src="images/vue2/vue2%E7%BB%84%E4%BB%B6-%E7%BB%84%E4%BB%B6%E6%A0%91.jpg"></p>
 <h2 id="向组件传递数据"><a href="#向组件传递数据" class="headerlink" title="向组件传递数据"></a>向组件传递数据</h2><p>大部分组件要完成自身的功能，都需要一些额外的信息</p>
 <p>比如一个头像组件，需要告诉它头像的地址，这就需要在使用组件时向组件传递数据</p>
 <p>传递数据的方式有很多种，最常见的一种是使用<strong>组件属性 component props</strong></p>
@@ -5988,8 +5983,7 @@ load,整个页面加载完才能触发    </li>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> OtherComp = &#123;</span><br><span class="line">  <span class="attr">components</span>: &#123;</span><br><span class="line">    MyComp</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">data</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="attr">a</span>:<span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">template</span>: <span class="string">`</span></span><br><span class="line"><span class="string">    &lt;my-comp :p1=&quot;a&quot; :p2=&quot;2&quot; p3=&quot;3&quot;/&gt;</span></span><br><span class="line"><span class="string">  `</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>注意：在组件中，属性是只读的，绝不可以更改，这叫做单向数据流</strong></p>
-<img src="http://mdrs.yuanjin.tech/img/2020-02-18-11-13-19.png" style="zoom:50%;" />
-
+<p><img src="/images/vue2/vue2%E7%BB%84%E4%BB%B6-%E5%8D%95%E5%90%91%E6%95%B0%E6%8D%AE%E6%B5%81.jpg"></p>
 ]]></content>
       <categories>
         <category>前端学习笔记</category>
@@ -6493,8 +6487,7 @@ load,整个页面加载完才能触发    </li>
 <p>axios: <a href="https://github.com/axios/axios">https://github.com/axios/axios</a></p>
 <p>mockjs：<a href="http://mockjs.com/">http://mockjs.com/</a></p>
 </blockquote>
-<h1 id="远程获取数据的意义"><a href="#远程获取数据的意义" class="headerlink" title="远程获取数据的意义"></a>远程获取数据的意义</h1><img src="http://mdrs.yuanjin.tech/img/20201204145137.png" alt="image-20201204145137500" style="zoom:40%;" />
-
+<h1 id="远程获取数据的意义"><a href="#远程获取数据的意义" class="headerlink" title="远程获取数据的意义"></a>远程获取数据的意义</h1><p><img src="/images/vue2/%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE-1.jpg" alt="获取数据"></p>
 <h1 id="开发环境有跨域问题"><a href="#开发环境有跨域问题" class="headerlink" title="开发环境有跨域问题"></a>开发环境有跨域问题</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sequenceDiagram</span><br><span class="line">浏览器-&gt;&gt;前端开发服务器: http://localhost:8080/</span><br><span class="line">前端开发服务器-&gt;&gt;浏览器: 页面</span><br><span class="line">浏览器-&gt;&gt;后端测试服务器: ajax 跨域：http://test-data:3000/api/news</span><br><span class="line">后端测试服务器-&gt;&gt;浏览器: JSON数据</span><br><span class="line">rect rgb(224,74,74)</span><br><span class="line">Note right of 浏览器: 浏览器阻止数据移交</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
 
 <h1 id="生产环境没有跨域问题"><a href="#生产环境没有跨域问题" class="headerlink" title="生产环境没有跨域问题"></a>生产环境没有跨域问题</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sequenceDiagram</span><br><span class="line">浏览器-&gt;&gt;服务器: http://www.my-site.com/</span><br><span class="line">服务器-&gt;&gt;浏览器: 页面</span><br><span class="line">浏览器-&gt;&gt;服务器: ajax：http://www.my-site.com/api/news</span><br><span class="line">服务器-&gt;&gt;浏览器: JSON数据</span><br></pre></td></tr></table></figure>
@@ -6507,6 +6500,7 @@ load,整个页面加载完才能触发    </li>
 
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sequenceDiagram</span><br><span class="line">participant 浏览器</span><br><span class="line">participant MockJS</span><br><span class="line">participant 前端开发服务器</span><br><span class="line">activate MockJS</span><br><span class="line">Note left of MockJS: 定义ajax拦截规则</span><br><span class="line">deactivate MockJS</span><br><span class="line">浏览器-&gt;&gt;前端开发服务器: http://localhost:8080/</span><br><span class="line">前端开发服务器-&gt;&gt;浏览器: 页面</span><br><span class="line">浏览器-&gt;&gt;MockJS: ajax：http://localhost:8080/api/news</span><br><span class="line">MockJS-&gt;&gt;浏览器: 模拟的JSON数据</span><br></pre></td></tr></table></figure>
 
+<p><a href="https://blog.csdn.net/qq_45808923/article/details/122667013"></a></p>
 ]]></content>
       <categories>
         <category>前端学习笔记</category>
@@ -6781,8 +6775,7 @@ load,整个页面加载完才能触发    </li>
     <title>vue2中的路由</title>
     <url>/135xyq.github.io/2022/01/01/%E8%B7%AF%E7%94%B1/</url>
     <content><![CDATA[<p>vue-router官网：<a href="https://router.vuejs.org/zh/">https://router.vuejs.org/zh/</a></p>
-<img src="http://mdrs.yuanjin.tech/img/20201202170037.png" alt="image-20201202170037391" style="zoom:50%;" />
-
+<p><img src="/images/vue2/%E8%B7%AF%E7%94%B1-1.jpg" alt="路由1"></p>
 <ol>
 <li><p><strong>如何根据地址中的路径选择不同的组件？</strong></p>
 </li>
@@ -6821,10 +6814,9 @@ load,整个页面加载完才能触发    </li>
 <h1 id="导航"><a href="#导航" class="headerlink" title="导航"></a>导航</h1><p><code>vue-router</code>提供了全局的组件<code>RouterLink</code>，它的渲染结果是一个<code>a</code>元素</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">RouterLink</span> <span class="attr">to</span>=<span class="string">&quot;/blog&quot;</span>&gt;</span>文章<span class="tag">&lt;/<span class="name">RouterLink</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- mode:hash 生成 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#/blog&quot;</span>&gt;</span>文章<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- mode:history 生成 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 为了避免刷新页面，vue-router实际上为它添加了点击事件，并阻止了默认行为，在事件内部使用hitory api更改路径 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/blog&quot;</span>&gt;</span>文章<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<img src="http://mdrs.yuanjin.tech/img/20201203150453.png" alt="image-20201203150453332" />
 
-<img src="http://mdrs.yuanjin.tech/img/20201203150918.png" alt="image-20201203150918219" style="zoom:50%;" />
-
+<p><img src="/images/vue2/%E8%B7%AF%E7%94%B1-3.jpg" alt="路由3"></p>
+<p><img src="/images/vue2/%E8%B7%AF%E7%94%B1-2.jpg" alt="路由2"></p>
 <h2 id="激活状态"><a href="#激活状态" class="headerlink" title="激活状态"></a>激活状态</h2><p>默认情况下，<code>vue-router</code>会用 <strong>当前路径</strong> 匹配 <strong>导航路径</strong> ：</p>
 <ul>
 <li>如果当前路径是以导航路径开头，则算作匹配，会为导航的a元素添加类名<code>router-link-active</code></li>
@@ -10481,6 +10473,34 @@ load,整个页面加载完才能触发    </li>
       <tags>
         <tag>课程学习</tag>
         <tag>马克思</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>1688. 比赛中的配对次数</title>
+    <url>/135xyq.github.io/2022/01/25/1688.%20%E6%AF%94%E8%B5%9B%E4%B8%AD%E7%9A%84%E9%85%8D%E5%AF%B9%E6%AC%A1%E6%95%B0/</url>
+    <content><![CDATA[<h1 id="1688-比赛中的配对次数-模拟-amp-直接观察规律"><a href="#1688-比赛中的配对次数-模拟-amp-直接观察规律" class="headerlink" title="1688. 比赛中的配对次数 模拟&amp;直接观察规律"></a>1688. 比赛中的配对次数 模拟&amp;直接观察规律</h1><h2 id="查看原题"><a href="#查看原题" class="headerlink" title="查看原题"></a><a href="https://leetcode-cn.com/problems/count-of-matches-in-tournament/">查看原题</a></h2><p><img src="https://img-blog.csdnimg.cn/b81b650b52404ca59426123c2ed6648b.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA562xLi4=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h2 id="解题思路-模拟"><a href="#解题思路-模拟" class="headerlink" title="解题思路(模拟)"></a>解题思路(模拟)</h2><p>一步步模拟出比赛的步骤，直到剩下一名选手。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">n</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> numberOfMatches = <span class="function"><span class="keyword">function</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">let</span> count = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(n &gt; <span class="number">1</span>)&#123;</span><br><span class="line">		<span class="keyword">let</span> temp = <span class="built_in">Math</span>.floor(n / <span class="number">2</span>);</span><br><span class="line">		count += temp;</span><br><span class="line">		n = <span class="built_in">Math</span>.ceil(n / <span class="number">2</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> count ;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/05b1556140674d6fada991be1b1a903b.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA562xLi4=,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
+<h2 id="解题思路-找规律"><a href="#解题思路-找规律" class="headerlink" title="解题思路(找规律)"></a>解题思路(找规律)</h2><p>因为要淘汰n-1名选手，所以要比赛n-1次</p>
+<h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h2><pre><code class="javascript">/**
+ * @param &#123;number&#125; n
+ * @return &#123;number&#125;
+ */
+var numberOfMatches = function(n) &#123;
+    return n - 1;
+&#125;;
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/ce8467c2816f46c68af5c63255a4f2a3.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA562xLi4=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+]]></content>
+      <categories>
+        <category>leetcode题解</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
+        <tag>leetcode</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
 </search>
