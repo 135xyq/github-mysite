@@ -17,19 +17,19 @@ tags:   #标签
 
 ## 路由跳转逻辑
 
-![image-20210107140253824](http://mdrs.yuanjin.tech/img/20210107140253.png)
+![动态路由-路由跳转逻辑](/images/vue2/动态路由-路由跳转逻辑.jpg)
 
 ## 组件逻辑
 
-![image-20210107142310757](http://mdrs.yuanjin.tech/img/20210107142310.png)
+![动态路由-组件逻辑](/images/vue2/动态路由-组件逻辑.jpg)
 
 ### BlogList
 
-![image-20210107153623557](http://mdrs.yuanjin.tech/img/20210107153623.png)
+![动态路由-BlogList](/images/vue2/动态路由-BlogList.jpg)
 
 ### BlogCategory
 
-![image-20210107154531659](http://mdrs.yuanjin.tech/img/20210107154531.png)
+![动态路由-BlogCategory](/images/vue2/动态路由-BlogCategory.jpg)
 
 # 知识
 

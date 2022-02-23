@@ -29,12 +29,12 @@
 <meta property="og:description" content="vue2中响应式原理">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://135xyq.github.io/images/vue2/%E6%95%B0%E6%8D%AE%E5%93%8D%E5%BA%94-%E5%8E%9F%E7%90%86.jpg">
-<meta property="og:image" content="http://mdrs.yuanjin.tech/img/20210226154624.png">
-<meta property="og:image" content="http://mdrs.yuanjin.tech/img/20210226155852.png">
-<meta property="og:image" content="http://mdrs.yuanjin.tech/img/20210226161404.png">
-<meta property="og:image" content="http://mdrs.yuanjin.tech/img/20210226163936.png">
+<meta property="og:image" content="https://135xyq.github.io/135xyq.github.io/2022/01/01/%E6%95%B0%E6%8D%AE%E5%93%8D%E5%BA%94/images/vue2/%E6%95%B0%E6%8D%AE%E5%93%8D%E5%BA%94-Observer.jpg">
+<meta property="og:image" content="https://135xyq.github.io/images/vue2/%E6%95%B0%E6%8D%AE%E5%93%8D%E5%BA%94-Dep.jpg">
+<meta property="og:image" content="https://135xyq.github.io/images/vue2/%E6%95%B0%E6%8D%AE%E5%93%8D%E5%BA%94-Watcher.jpg">
+<meta property="og:image" content="https://135xyq.github.io/images/vue2/%E6%95%B0%E6%8D%AE%E5%93%8D%E5%BA%94-%E6%80%BB%E4%BD%93%E6%B5%81%E7%A8%8B.jpg">
 <meta property="article:published_time" content="2022-01-01T06:04:47.000Z">
-<meta property="article:modified_time" content="2022-01-20T07:04:03.301Z">
+<meta property="article:modified_time" content="2022-01-30T06:32:42.998Z">
 <meta property="article:author" content="筱">
 <meta property="article:tag" content="vue2">
 <meta property="article:tag" content="前端">
@@ -99,9 +99,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/135xyq.github.io/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
         <li class="menu-item menu-item-about"><a href="/135xyq.github.io/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
-        <li class="menu-item menu-item-tags"><a href="/135xyq.github.io/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">34</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/135xyq.github.io/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">23</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/135xyq.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">116</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/135xyq.github.io/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">35</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/135xyq.github.io/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">25</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/135xyq.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">132</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -173,18 +173,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/135xyq.github.io/archives/">
-          <span class="site-state-item-count">116</span>
+          <span class="site-state-item-count">132</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/135xyq.github.io/categories/">
-        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-count">25</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/135xyq.github.io/tags/">
-        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-count">35</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -277,7 +277,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-01-20 15:04:03" itemprop="dateModified" datetime="2022-01-20T15:04:03+08:00">2022-01-20</time>
+      <time title="修改时间：2022-01-30 14:32:42" itemprop="dateModified" datetime="2022-01-30T14:32:42+08:00">2022-01-30</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -316,7 +316,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>2.1k</span>
+      <span>2k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -357,8 +357,7 @@
 <p>具体实现上，它会递归遍历对象的所有属性，以完成深度的属性转换。</p>
 <p>由于遍历时只能遍历到对象的当前属性，因此无法监测到将来动态增加或删除的属性，因此<code>vue</code>提供了<code>$set</code>和<code>$delete</code>两个实例方法，让开发者通过这两个实例方法对已有响应式对象添加或删除属性。</p>
 <p>对于数组，<code>vue</code>会更改它的隐式原型，之所以这样做，是因为vue需要监听那些可能改变数组内容的方法</p>
-<img src="http://mdrs.yuanjin.tech/img/20210226154624.png" alt="image-20210226154624015" style="zoom:50%;" />
-
+<p><img src="images/vue2/%E6%95%B0%E6%8D%AE%E5%93%8D%E5%BA%94-Observer.jpg"></p>
 <p>总之，Observer的目标，就是要让一个对象，它属性的读取、赋值，内部数组的变化都要能够被vue感知到。</p>
 <h1 id="Dep"><a href="#Dep" class="headerlink" title="Dep"></a>Dep</h1><p>这里有两个问题没解决，就是读取属性时要做什么事，而属性变化时要做什么事，这个问题需要依靠Dep来解决。</p>
 <p>Dep的含义是<code>Dependency</code>，表示依赖的意思。</p>
@@ -369,8 +368,7 @@
 </ul>
 <p>当读取响应式对象的某个属性时，它会进行依赖收集：有人用到了我</p>
 <p>当改变某个属性时，它会派发更新：那些用我的人听好了，我变了</p>
-<img src="http://mdrs.yuanjin.tech/img/20210226155852.png" alt="image-20210226155852964" style="zoom:50%;" />
-
+<p><img src="/images/vue2/%E6%95%B0%E6%8D%AE%E5%93%8D%E5%BA%94-Dep.jpg"></p>
 <h1 id="Watcher"><a href="#Watcher" class="headerlink" title="Watcher"></a>Watcher</h1><p>这里又出现一个问题，就是Dep如何知道是谁在用我？</p>
 <p>要解决这个问题，需要依靠另一个东西，就是Watcher。</p>
 <p>当某个函数执行的过程中，用到了响应式数据，响应式数据是无法知道是哪个函数在用自己的</p>
@@ -378,8 +376,7 @@
 <p>我们不要直接执行函数，而是把函数交给一个叫做watcher的东西去执行，watcher是一个对象，每个这样的函数执行时都应该创建一个watcher，通过watcher去执行</p>
 <p>watcher会设置一个全局变量，让全局变量记录当前负责执行的watcher等于自己，然后再去执行函数，在函数的执行过程中，如果发生了依赖记录<code>dep.depend()</code>，那么<code>Dep</code>就会把这个全局变量记录下来，表示：有一个watcher用到了我这个属性</p>
 <p>当Dep进行派发更新时，它会通知之前记录的所有watcher：我变了</p>
-<img src="http://mdrs.yuanjin.tech/img/20210226161404.png" alt="image-20210226161404327" style="zoom:50%;" />
-
+<p><img src="/images/vue2/%E6%95%B0%E6%8D%AE%E5%93%8D%E5%BA%94-Watcher.jpg"></p>
 <p>每一个<code>vue</code>组件实例，都至少对应一个<code>watcher</code>，该<code>watcher</code>中记录了该组件的<code>render</code>函数。</p>
 <p><code>watcher</code>首先会把<code>render</code>函数运行一次以收集依赖，于是那些在render中用到的响应式数据就会记录这个watcher。</p>
 <p>当数据变化时，dep就会通知该watcher，而watcher将重新运行render函数，从而让界面重新渲染同时重新记录当前的依赖。</p>
@@ -391,10 +388,10 @@
 <p>调度器维护一个执行队列，该队列同一个watcher仅会存在一次，队列中的watcher不是立即执行，它会通过一个叫做<code>nextTick</code>的工具方法，把这些需要执行的watcher放入到事件循环的微队列中，nextTick的具体做法是通过<code>Promise</code>完成的</p>
 <blockquote>
 <p>nextTick 通过 <code>this.$nextTick</code> 暴露给开发者</p>
-<p>nextTick 的具体处理方式见：<a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/guide/reactivity.html#%E5%BC%82%E6%AD%A5%E6%9B%B4%E6%96%B0%E9%98%9F%E5%88%97">https://cn.vuejs.org/v2/guide/reactivity.html#%E5%BC%82%E6%AD%A5%E6%9B%B4%E6%96%B0%E9%98%9F%E5%88%97</a></p>
+<p>nextTick 的具体处理方式见：<a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/guide/reactivity.html#%E5%BC%82%E6%AD%A5%E6%9B%B4%E6%96%B0%E9%98%9F%E5%88%97">链接</a></p>
 </blockquote>
 <p>也就是说，当响应式数据变化时，<code>render</code>函数的执行是异步的，并且在微队列中</p>
-<h1 id="总体流程"><a href="#总体流程" class="headerlink" title="总体流程"></a>总体流程</h1><p><img src="http://mdrs.yuanjin.tech/img/20210226163936.png" alt="image-20210226163936839"></p>
+<h1 id="总体流程"><a href="#总体流程" class="headerlink" title="总体流程"></a>总体流程</h1><p><img src="/images/vue2/%E6%95%B0%E6%8D%AE%E5%93%8D%E5%BA%94-%E6%80%BB%E4%BD%93%E6%B5%81%E7%A8%8B.jpg"></p>
 
     </div>
 
@@ -489,14 +486,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">354k</span>
+    <span title="站点总字数">394k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">5:22</span>
+    <span title="站点阅读时长">5:58</span>
   </span>
 </div>
 

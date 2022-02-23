@@ -101,6 +101,9 @@ type: about
 [烟花](https://135xyq.github.io/happy-new-year/)
 [![happy-new-year](../images/aboutImages/happy-new-year.jpg)](https://135xyq.github.io/happy-new-year/)
 
+[每日优鲜](https://135xyq.github.io/daily_options/)
+[![daily_options](../images/aboutImages/daily_options.jpg)](https://135xyq.github.io/daily_options/)
+
 
 
 

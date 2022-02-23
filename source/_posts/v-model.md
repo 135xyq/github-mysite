@@ -10,6 +10,7 @@ categories:
 tags:   #标签
 	- vue2
 	- 前端
+	- 面试题
 ---
 
 面试题：请阐述一下 `v-model` 的原理

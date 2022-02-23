@@ -13,7 +13,7 @@ tags:   #标签
 ---
 
 
-![image-20210126132906004](http://mdrs.yuanjin.tech/img/20210126132906.png)
+![image-20210126132906004](/images/vue2/vue数据共享-1.jpg)
 
 在`vue`中遇到**共享数据**，会带来下面的多个问题：
 
@@ -25,8 +25,7 @@ tags:   #标签
 
 一种比较容易想到的方案，就是把所有的共享数据**全部**提升到根组件，然后通过属性不断下发，当某个组件需要修改数据时，又不断向上抛出事件，直到根组件完成对数据的修改。
 
-![image-20210126133905451](http://mdrs.yuanjin.tech/img/20210126133905.png)
-
+![image-20210126133905451](/images/vue2/vue数据共享-2.jpg)
 这种方案的缺陷也非常明显：
 
 - 需要编写大量的代码层层下发数据，很多组件被迫拥有了自己根本不需要的数据
@@ -36,8 +35,7 @@ tags:   #标签
 
 基于上面的问题，我们可以简单的设置一个**独立的数据仓库**。
 
-![image-20210126140353891](http://mdrs.yuanjin.tech/img/20210126140353.png)
-
+![image-20210126140353891](/images/vue2/vue数据共享-3.jpg)
 - 组件需要什么共享数据，可以自由的从仓库中获取，需要什么拿什么。
 
 - 组件可以自由的改变仓库中的数据，仓库的数据变化后，会自动通知用到对应数据的组件更新
@@ -144,7 +142,7 @@ store.commit("mutation的名字", payload);
 
 现在，我们可以通过`vue devtools`观测到数据的变化了
 
-**特别注意： **
+**特别注意：**
 
 1. `mutation`中不得出现异步操作
 
@@ -157,7 +155,7 @@ store.commit("mutation的名字", payload);
 
 2. 提交`mutation`是数据改变的**唯一原因**
 
-<img src="http://mdrs.yuanjin.tech/img/20210129151639.png" alt="image-20210129151639301" style="zoom: 50%;" />
+![](/images/vue2/vue数据共享-4.jpg)
 
 # 异步处理
 
@@ -193,4 +191,4 @@ const store = new Vuex({
 })
 ```
 
-<img src="http://mdrs.yuanjin.tech/img/20210129160320.png" alt="image-20210129160320025" style="zoom:50%;" />
+![](/images/vue2/vue数据共享-5.jpg)
